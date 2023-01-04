@@ -30,7 +30,7 @@ Youtubeなどで静かな音楽や環境音など流しながらタイマーを�
 <...>
 
 ## 開発環境
-- OS：Macbook Pro
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
