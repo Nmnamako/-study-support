@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+/*  デプロイ1章にて背景画像はこのように入力する
+.hoge {
+  background-image: imgage-url("xxxx.jpeg");
+}
+*/
+
