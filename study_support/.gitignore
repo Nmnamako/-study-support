@@ -41,3 +41,5 @@ yarn-debug.log*
 
 # Gitの管理対処から外しセキュリティ面で安全を高める
 /.env
+
+/vendor/bundle*
