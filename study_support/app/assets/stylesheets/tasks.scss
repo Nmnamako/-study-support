@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 //タスク作成ボタン
 #taskCreation {
   background-color: red;
@@ -9,9 +10,50 @@
   border-radius: 5px;
 }
 
+
+//作成したToDo項目,start
+.taskList {
+  position: relative;
+  background-color: white;
+  margin-bottom: 10px;
+  margin: 0 auto 10px;
+  height: 150px;
+  width: 700px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btnRightBottom {
+  position: absolute;
+  top: 70%;
+  left: 65%;
+}
+
+.btnBlue {
+  background-color: #00ECFF;
+  border-radius: 15px;
+  padding: 10px 30px;
+  margin-right: 10px;
+}
+
+.btnGreen {
+  background-color: #B6FF01;
+  border-radius: 15px;
+  padding: 10px 30px;
+  margin-right: 10px;
+}
+
+.btnRed {
+  background-color: #FF1A6F;
+  border-radius: 15px;
+  padding: 10px 30px;
+}
+//作成したToDo項目,end
+
+
 //タスクモーダル
 #taskModal {
-  position:fixed;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

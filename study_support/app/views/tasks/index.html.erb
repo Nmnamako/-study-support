@@ -4,17 +4,33 @@
   <div id="taskModal">
     <p>タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
-      <div><%= f.text_field :title %></div>
+      <%= f.text_field :title %>
       <%= f.submit "タスク作成" %>
     <%end%>
   </div>
   
   <div id="breakTime"></div>
-  <button id="taskCreation">タスク作成</button>
-  <span>ゲストログイン用タイマー</span>
   
-  <div>ようこそ</div>
-  <%= link_to "こちら", tasks_path %>
+  <% if user_signed_in? %>
+    <button id="taskCreation">タスク作成</button>
+    <span>ゲストログイン用タイマー</span>
+  <%end%>
+  
+  <% if user_signed_in? %>
+    <% @tasks.each do |tasks| %>
+      <div class="taskList">
+        <%= tasks.title %>
+        <div class="btnRightBottom">
+          <span class="btnBlue"><% link_to edit_task_path(tasks.id) %></span>
+          <span class="btnGreen"></span>
+          <span class="btnRed"></span>
+        </div>
+      </div>
+    <%end%>
+  <%else%>
+    <div>アカウントを作成されていないのでToDoリストはご利用できません。</div>
+  <%end%>
+  
 </div>
 
 <!--一番下じゃないとエラーになる-->

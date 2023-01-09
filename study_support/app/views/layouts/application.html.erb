@@ -14,8 +14,8 @@
     <header>
       <ul>
         <% if user_signed_in? %>
-          <li><%= link_to homes_top_path do %>ToDoリスト<%end%></li>
-          <li><%= link_to homes_top_path do %>マイページ<%end%></li>
+          <li><%= link_to tasks_path do %>ToDoリスト<%end%></li>
+          <li><%= link_to homes_my_page_path(@user) do %>マイページ<%end%></li>
           <li><%= link_to destroy_user_session_path, method: :delete do %>ログアウト<%end%></li>
         <%else%>
           <li><%= link_to user_session_path do %>ログイン<%end%></li>
