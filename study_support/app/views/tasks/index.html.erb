@@ -1,0 +1,21 @@
+<div id="container">
+  <div id="black"></div>
+  
+  <div id="taskModal">
+    <p>タスク作成</p>
+    <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
+      <div><%= f.text_field :title %></div>
+      <%= f.submit "タスク作成" %>
+    <%end%>
+  </div>
+  
+  <div id="breakTime"></div>
+  <button id="taskCreation">タスク作成</button>
+  <span>ゲストログイン用タイマー</span>
+  
+  <div>ようこそ</div>
+  <%= link_to "こちら", tasks_path %>
+</div>
+
+<!--一番下じゃないとエラーになる-->
+<%= javascript_pack_tag 'task/index' %>
