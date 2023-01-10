@@ -19,11 +19,11 @@
   <% if user_signed_in? %>
     <% @tasks.each.with_index(1) do |tasks, index| %>
       <div class="taskList">
-        <div><%= tasks.title %></div>
+        <div id="taskTitle<%= index %>"><%= tasks.title %></div>
         <div class="btnRightBottom">
           <span class="btnBlue"><%= link_to "編集", edit_task_path(tasks.id) %></span>
-          <span class="btnGreen"></span>
-          <div class="timerStart<%= index %>"><!--<%= link_to "開始", task_path(tasks.id) %>--></div>
+          <span class="btnGreen"><%= link_to "詳細", task_path(tasks.id) %></span>
+          <div class="timerStart<%= index %>"><%= link_to "開始", task_path(tasks.id), remote: true %></div>
         </div>
       </div>
     <%end%>
@@ -33,12 +33,14 @@
   
   <!--タイマー用モーダル-->
   <div id="timerModal">
-    <div id="taskTitle"></div>
+    <div id="taskTitleShow">
+      <%= render "tasks/show", show: @task %>
+    </div>
     <div>タイマー表示</div>
     <span>スタート</span>
     <span>開始</span>
     <span>停止</span>
-    <button>とじる</button>
+    <button id="timerModalClose">とじる</button>
   </div>
   
 </div>
