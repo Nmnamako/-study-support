@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   def index
     @user = current_user
     @task = Task.new
+    
+    #ログインユーザーのみ表示させる
     if user_signed_in?
       @tasks = @user.tasks
     end

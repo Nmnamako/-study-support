@@ -1,6 +1,5 @@
 <div id="container">
   <div id="black"></div>
-  
   <div id="taskModal">
     <p>タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
@@ -22,9 +21,9 @@
       <div class="taskList">
         <%= tasks.title %>
         <div class="btnRightBottom">
-          <span class="btnBlue"><% link_to edit_task_path(tasks.id) %></span>
-          <span class="btnGreen"></span>
-          <span class="btnRed"></span>
+          <span id="btnBlue"><% link_to edit_task_path(tasks.id) %></span>
+          <span id="btnGreen">d</span>
+          <span id="timerStart">s</span>
         </div>
       </div>
     <%end%>
@@ -32,13 +31,17 @@
     <div>アカウントを作成されていないのでToDoリストはご利用できません。</div>
   <%end%>
   
-  
   <!--タイマー用モーダル-->
   <div id="timerModal">
-    
+    <div id="taskTitle"></div>
+    <div>タイマー表示</div>
+    <span>スタート</span>
+    <span>開始</span>
+    <span>停止</span>
+    <button>とじる</button>
   </div>
   
 </div>
 
 <!--一番下じゃないとエラーになる-->
-<%= javascript_pack_tag 'task/index' %>
+<%= javascript_pack_tag 'task/index'%>

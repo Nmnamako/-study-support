@@ -29,24 +29,25 @@
   left: 65%;
 }
 
-.btnBlue {
+#btnBlue {
   background-color: #00ECFF;
   border-radius: 15px;
   padding: 10px 30px;
   margin-right: 10px;
 }
 
-.btnGreen {
+#btnGreen {
   background-color: #B6FF01;
   border-radius: 15px;
   padding: 10px 30px;
   margin-right: 10px;
 }
 
-.btnRed {
+#timerStart {
   background-color: #FF1A6F;
   border-radius: 15px;
   padding: 10px 30px;
+  cursor: pointer;
 }
 //作成したToDo項目,end
 
@@ -58,9 +59,42 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
+  padding: 50px;
+  border-radius: 10px;
   opacity: 0;
   pointer-events: none;
 }
+
+//タイマーモーダル
+#timerModal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  padding: 150px 100px;
+  border-radius: 10px;
+}
+
+#taskTitle {
+  position: absolute;
+  top: 10%;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //モーダル用背景色
 #black {
