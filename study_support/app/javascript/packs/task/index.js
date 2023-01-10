@@ -11,7 +11,7 @@ document.getElementById("taskCreation").addEventListener('click', function() {
 });
 
 
-document.getElementById("timerStart").addEventListener('click', function() {
+document.querySelectorAll(".timerStart")[0].addEventListener('click', function() {
   taskModal.classList.add("active");
   black.classList.add("active");
 });

@@ -19,11 +19,11 @@
   <% if user_signed_in? %>
     <% @tasks.each do |tasks| %>
       <div class="taskList">
-        <%= tasks.title %>
+        <div><%= tasks.title %></div>
         <div class="btnRightBottom">
-          <span id="btnBlue"><% link_to edit_task_path(tasks.id) %></span>
-          <span id="btnGreen">d</span>
-          <span id="timerStart">s</span>
+          <span class="btnBlue"><%= link_to "編集", edit_task_path(tasks.id) %></span>
+          <span class="btnGreen"></span>
+          <div class="timerStart"><!--<%= link_to "開始", task_path(tasks.id) %>--></div>
         </div>
       </div>
     <%end%>

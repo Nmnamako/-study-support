@@ -29,21 +29,21 @@
   left: 65%;
 }
 
-#btnBlue {
+.btnBlue {
   background-color: #00ECFF;
   border-radius: 15px;
   padding: 10px 30px;
   margin-right: 10px;
 }
 
-#btnGreen {
+.btnGreen {
   background-color: #B6FF01;
   border-radius: 15px;
   padding: 10px 30px;
   margin-right: 10px;
 }
 
-#timerStart {
+.timerStart {
   background-color: #FF1A6F;
   border-radius: 15px;
   padding: 10px 30px;
@@ -74,6 +74,8 @@
   background-color: red;
   padding: 150px 100px;
   border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 #taskTitle {
