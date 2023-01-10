@@ -53,7 +53,14 @@ Youtubeなどで静かな音楽や環境音など流しながらタイマーを�
 
 
 ## 設計書
-<...>
+ER図
+https://app.diagrams.net/#G1UK-WDq8f-MhpQlDgb3xAj9SR_pLdpkpw
+
+テーブル定義書
+https://docs.google.com/spreadsheets/d/17vJjpKevmiNklE1ejdWXvagLsC9oFsVUm4BDrPJ8TVw/edit#gid=1396735276
+
+アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1iMwrILWBEJEnvUs6qHPhpDSLKWHhQnolIyBwSDa3JKE/edit#gid=549108681
 
 
 ## 開発環境

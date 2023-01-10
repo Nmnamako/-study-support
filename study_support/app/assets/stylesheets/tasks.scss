@@ -14,7 +14,7 @@
 //作成したToDo項目,start
 .taskList {
   position: relative;
-  background-color: white;
+  background-color:	#E6E6FA;
   margin-bottom: 10px;
   margin: 0 auto 10px;
   height: 150px;
@@ -77,9 +77,11 @@
 #taskModal.active {
   opacity: 1;
   pointer-events: auto;
+  z-index: 10;
 }
 
 #black.active {
   opacity: 1;
   pointer-events: auto;
+  z-index: 10;
 }

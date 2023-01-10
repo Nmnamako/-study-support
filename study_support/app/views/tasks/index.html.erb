@@ -16,6 +16,7 @@
     <span>ゲストログイン用タイマー</span>
   <%end%>
   
+  <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
     <% @tasks.each do |tasks| %>
       <div class="taskList">
@@ -30,6 +31,12 @@
   <%else%>
     <div>アカウントを作成されていないのでToDoリストはご利用できません。</div>
   <%end%>
+  
+  
+  <!--タイマー用モーダル-->
+  <div id="timerModal">
+    
+  </div>
   
 </div>
 
