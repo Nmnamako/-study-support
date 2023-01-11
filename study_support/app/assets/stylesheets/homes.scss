@@ -2,3 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.container {
+  background-color: gray;
+  height: 100vh;
+}
+
+.space {
+  padding-top: 200px;
+}
+
+.row {
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 0 auto;
+
+}
+
