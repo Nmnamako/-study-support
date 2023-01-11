@@ -112,7 +112,17 @@
   
 }
 
-
+//ゲスト用タイマー
+#guestTimer {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: gray;
+  padding: 150px 100px;
+  border-radius: 10px;
+  
+}
 
 
 //モーダル用背景色

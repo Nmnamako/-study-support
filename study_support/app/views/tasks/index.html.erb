@@ -12,7 +12,6 @@
   
   <% if user_signed_in? %>
     <button id="taskCreation">タスク作成</button>
-    <span>ゲストログイン用タイマー</span>
   <%end%>
   
   <!--ToDoリスト一覧-->
@@ -32,6 +31,16 @@
     <%end%>
   <%else%>
     <div>アカウントを作成されていないのでToDoリストはご利用できません。</div>
+    <div>ポモドーロタイマーのみご使用できます。</div>
+    
+    <div id="guestTimerModal">
+      <div id="guestTimer">
+        <div id="guestMin">aaaa</div>
+        <div id="guestSec">aaaa</div>
+        <button id="guestStart">開始</button>
+        <button id="guestStop">停止</button>
+      </div>
+    </div>
   <%end%>
   
   
@@ -57,4 +66,5 @@
 <!--<%= render "tasks/show", show: @task %>-->
 
 <!--一番下じゃないとエラーになる-->
+<%= javascript_pack_tag 'task/index1'%>
 <%= javascript_pack_tag 'task/index'%>
