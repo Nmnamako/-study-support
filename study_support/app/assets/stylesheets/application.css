@@ -42,3 +42,8 @@ li {
   display: inline-block;
   margin-right: 20px;
 }
+
+.headerTextColor {
+  text-decoration: none;
+  color: black;
+}

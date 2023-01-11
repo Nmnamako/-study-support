@@ -15,12 +15,12 @@
       <header>
         <ul>
           <% if user_signed_in? %>
-            <li><%= link_to tasks_path do %>ToDoリスト<%end%></li>
-            <li><%= link_to homes_my_page_path(@user) do %>マイページ<%end%></li>
-            <li><%= link_to destroy_user_session_path, method: :delete do %>ログアウト<%end%></li>
+            <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
+            <li><%= link_to homes_my_page_path(@user), class: "headerTextColor" do %>マイページ<%end%></li>
+            <li><%= link_to destroy_user_session_path, method: :delete, class: "headerTextColor" do %>ログアウト<%end%></li>
           <%else%>
-            <li><%= link_to user_session_path do %>ログイン<%end%></li>
-            <li><%= link_to new_user_registration_path do %>アカウント作成<%end%></li>
+            <li><%= link_to user_session_path, class: "headerTextColor" do %>ログイン<%end%></li>
+            <li><%= link_to new_user_registration_path, class: "headerTextColor" do %>アカウント作成<%end%></li>
           <%end%>
         </ul>
       </header>
