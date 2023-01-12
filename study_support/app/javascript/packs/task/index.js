@@ -26,25 +26,22 @@ let changeTime = false;
 
 
 //タスク
-let aaa = {};
-window.onload = function() {
-  let taskList = document.getElementsByTagName("taskList")
-  for (let i=0; i < taskList.length; i++) {
-    document.getElementsByClassName("taskTitle")
-  };
-};
+//let aaa = {};
+//window.onload = function() {
+//  let taskList = document.getElementsByTagName("taskList")
+//  for (let i=0; i < taskList.length; i++) {
+//    document.getElementsByClassName("taskTitle")
+//  };
+//};
 
-
-
-//
 
 //minとsecにタイマー表示
 function progressMin(){
-  document.getElementById("min").textContent = minTime + "分";
+  document.getElementById("min").textContent = minTime + "：";
 };
 
 function progressSec() {
-  document.getElementById("sec").textContent = secTime + "秒";
+  document.getElementById("sec").textContent = secTime;
 };
 
 progressMin();
@@ -115,10 +112,16 @@ document.getElementById("stop").addEventListener('click', function(){
 });
 
 
+
 //タスク作成押下後、タスク作成モーダル展開
 document.getElementById("taskCreation").addEventListener('click', function() {
   taskModal.classList.add("active");
   black.classList.add("active");
+});
+
+document.getElementById("taskModalClose").addEventListener('click', function(){
+  taskModal.classList.remove("active");
+  black.classList.remove("active");
 });
 
 document.getElementById("timerModalClose").addEventListener('click', function() {

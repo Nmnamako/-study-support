@@ -5,42 +5,79 @@
 
 //タスク作成ボタン
 #taskCreation {
-  background-color: red;
+  margin: 20px auto;
+  background-color: #00FA9A;
   padding: 10px;
   border-radius: 5px;
+  width: 100px;
+  box-shadow: 3px 3px 3px gray;
+  cursor: pointer;
 }
 
+.entireList {
+  background-color: #F8F8FF;
+  padding: 5px 0;
+  width: 50%;
+  margin: 0 auto 30px;
+  box-shadow: 5px 5px 5px gray;
+}
 
 //作成したToDo項目,start
 .taskList {
   position: relative;
   background-color:	#E6E6FA;
-  margin-bottom: 10px;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   height: 150px;
   width: 700px;
   border-radius: 10px;
   text-align: center;
 }
 
-.btnRightBottom {
+.taskName {
   position: absolute;
-  top: 70%;
-  left: 65%;
+  top: 10px;
+  left: 10px;
+}
+.taskTitle {
+  position: absolute;
+  top: 5px;
+  left: 90px;
+  font-size: 20px;
 }
 
-.btnBlue {
+.btnRightBottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+  padding: 10px 20px;
+  box-shadow: 3px 3px 3px gray;
+  cursor: pointer;
+}
+
+.editButton {
   background-color: #00ECFF;
   border-radius: 15px;
   padding: 10px 30px;
   margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
 }
 
-.btnGreen {
+.showButoon {
   background-color: #B6FF01;
   border-radius: 15px;
   padding: 10px 30px;
   margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
 }
 
 .timerStart {
@@ -48,6 +85,7 @@
   border-radius: 15px;
   padding: 10px 30px;
   cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
 }
 
 //.timerStart2 {
@@ -93,6 +131,10 @@
   pointer-events: none;
 }
 
+#taskModalClose {
+  
+}
+
 //タイマーモーダル
 #timerModal {
   position: fixed;
@@ -109,21 +151,7 @@
 #taskTitle {
   position: absolute;
   top: 10%;
-  
 }
-
-//ゲスト用タイマー
-#guestTimer {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: gray;
-  padding: 150px 100px;
-  border-radius: 10px;
-  
-}
-
 
 //モーダル用背景色
 #black {
@@ -164,4 +192,46 @@
   transform: translate(-50%, -50%);
   padding: 50px;
   background-color: red;
+}
+
+
+//ここから先はゲスト用
+//ゲスト用タイマー
+#guestTimer {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #87CEEB;
+  height: 200px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 3px gray;
+}
+
+#guestMin {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#guestSec {
+  display: inline-block;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+#guestStart, #guestStop {
+  padding: 5px 30px;
+  border-radius: 20px;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
+}
+
+#guestStart:hover, #guestStop:hover {
+  background: #2ecc71;
+}
+
+.guestText {
+  margin: 20px 0 20px 0;
+  text-align: center;
 }

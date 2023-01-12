@@ -2,7 +2,7 @@
 //カウントダウンタイマー関係
 //時間格納用
 let guestMinTime = 25;
-let guestSecTime = 0;
+let guestSecTime = "00";
 
 //タイマー停止用
 let guestInterval;
@@ -11,11 +11,11 @@ let guestInterval;
 let guestChangeTime = false;
 
 function progressGuestMin() {
-  document.getElementById("guestMin").textContent = guestMinTime + "分";
+  document.getElementById("guestMin").textContent = guestMinTime;
 };
 
 function progressGuestSin() {
-  document.getElementById("guestSec").textContent = guestSecTime + "秒";
+  document.getElementById("guestSec").textContent = guestSecTime;
 };
 
 
@@ -68,13 +68,13 @@ function guestReset() {
   if (guestChangeTime == true) {
     //休憩時間
     guestMinTime = 5;
-    guestSecTime = 0;
+    guestSecTime = "00";
     progressGuestMin();
     progressGuestSin();
   } else {
     //作業時間
     guestMinTime = 25;
-    guestSecTime = 0;
+    guestSecTime = "00";
     progressGuestMin();
     progressGuestSin();
   };

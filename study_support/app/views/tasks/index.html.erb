@@ -6,41 +6,47 @@
       <%= f.text_field :title %>
       <%= f.submit "タスク作成" %>
     <%end%>
+    <button id="taskModalClose">とじる</button>
   </div>
   
   <div id="breakTime"></div>
   
   <% if user_signed_in? %>
-    <button id="taskCreation">タスク作成</button>
+    <div id="taskCreation">タスク作成</div>
   <%end%>
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
-    <% @tasks.each do |tasks| %>
-      <div class="taskList">
-        
-        <div class="taskTitle"><%= tasks.title %></div>
-        
-        <div class="btnRightBottom">
-          <span class="deleteButton"><%= link_to "削除", task_path(tasks.id), method: :delete %></span>
-          
-          <span class="btnBlue"><%= link_to "編集", edit_task_path(tasks.id) %></span>
-          
-          <span class="btnGreen"><%= link_to "詳細", task_path(tasks.id) %></span>
-          <div class="timerStart">開始</div>
+    <div class="entireList">
+      <div style="margin: 10px;">ToDoリスト</div>
+      <% @tasks.each do |tasks| %>
+        <div class="taskList">
+          <div class="taskName">タスク名：</div>
+          <div class="taskTitle"><%= tasks.title %></div>
+          <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
+  
+          <div class="btnRightBottom">
+            <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
+            <%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>
+            <i class="timerStart fa-solid fa-play" style="color: black;"></i>
+          </div>
         </div>
-      </div>
-    <%end%>
+      <%end%>
+    </div>
   <%else%>
-    <div>アカウントを作成されていないのでToDoリストはご利用できません。</div>
-    <div>ポモドーロタイマーのみご使用できます。</div>
+  
+    <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
+    <div class="guestText">ポモドーロタイマーのみご使用できます。</div>
     
     <div id="guestTimerModal">
       <div id="guestTimer">
-        <div id="guestMin">aaaa</div>
-        <div id="guestSec">aaaa</div>
-        <button id="guestStart">開始</button>
-        <button id="guestStop">停止</button>
+        <div id="guestMin"></div>
+        <span style="font-size: 50px;">:</span>
+        <div id="guestSec"></div>
+        <div>
+          <button id="guestStart">開始</button>
+          <button id="guestStop">停止</button>
+        </div>
       </div>
     </div>
   <%end%>
@@ -48,7 +54,7 @@
   
   <!--タイマー用モーダル-->
   <div id="timerModal">
-    <div>作業中のタスク</div>
+    <div class="">作業中のタスク</div>
     <div id="taskTitleShow"></div>
     
     <div id="timer">
