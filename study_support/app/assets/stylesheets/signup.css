@@ -1,0 +1,65 @@
+
+
+.box {
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  text-align: center;
+  color: black;
+  border-radius: 10px;
+  border: 5px double gray;
+
+  /*テキストデザイン*/
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.box h2{
+  margin-top: 10px;
+}
+/* ユーザーIDとパスワードinputのスタイル */
+.email, .password, .name {
+  background: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10px;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+
+  /*????*/
+  outline: none;
+  border-radius: 24px;
+  transition: 0.5s;
+}
+
+/* 入力ボックスがフォーカスされたときのスタイル（幅が大きくなる＆枠の色が変わる） */
+.email:focus, .password:focus, .name:focus {
+  width: 280px;
+  border-color: #2ecc71;
+}
+
+/* Loginボタンのスタイル */
+.login, .signup {
+  background: none;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* Loginボタンをマウスオーバーしたときのスタイル */
+.login:hover, .signup:hover {
+  background: #2ecc71;
+}
+
+.link {
+  margin-bottom: 10px;
+}
