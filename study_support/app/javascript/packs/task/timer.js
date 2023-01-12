@@ -6,11 +6,11 @@ let taskTitleShow = document.getElementById("taskTitleShow")
 
 //.innerHTMLをつけることで[object HTMLSpanElement]の出力を回避する
 //コードが長くなるので、taskTitle1などで省略するため宣言をした
-//let taskTitle1 = document.getElementById("taskTitle1").innerHTML;
-//let taskTitle2 = document.getElementById("taskTitle2").innerHTML;
-//let taskTitle3 = document.getElementById("taskTitle3").innerHTML;
-//let taskTitle4 = document.getElementById("taskTitle4").innerHTML;
-//let taskTitle5 = document.getElementById("taskTitle5").innerHTML;
+let taskTitle1 = document.getElementById("taskTitle1").innerHTML;
+let taskTitle2 = document.getElementById("taskTitle2").innerHTML;
+let taskTitle3 = document.getElementById("taskTitle3").innerHTML;
+let taskTitle4 = document.getElementById("taskTitle4").innerHTML;
+let taskTitle5 = document.getElementById("taskTitle5").innerHTML;
 
 
 //カウントダウンタイマー関係
@@ -25,18 +25,6 @@ let interval;
 let changeTime = false;
 
 
-//タスク
-let aaa = {};
-window.onload = function() {
-  let taskList = document.getElementsByTagName("taskList")
-  for (let i=0; i < taskList.length; i++) {
-    document.getElementsByClassName("taskTitle")
-  };
-};
-
-
-
-//
 
 //minとsecにタイマー表示
 function progressMin(){
@@ -121,6 +109,41 @@ document.getElementById("taskCreation").addEventListener('click', function() {
   black.classList.add("active");
 });
 
+document.querySelector(".timerStart1").addEventListener('click', function() {
+  timerModal.classList.add("active");
+  black.classList.add("active");
+  taskTitleShow.innerHTML = taskTitle1;
+  start();
+});
+
+document.querySelector(".timerStart2").addEventListener('click', function() {
+  timerModal.classList.add("active");
+  black.classList.add("active");
+  taskTitleShow.innerHTML = taskTitle2;
+  start();
+});
+
+document.querySelector(".timerStart3").addEventListener('click', function() {
+  timerModal.classList.add("active");
+  black.classList.add("active");
+  taskTitleShow.innerHTML = taskTitle3;
+  start();
+});
+
+document.querySelector(".timerStart4").addEventListener('click', function() {
+  timerModal.classList.add("active");
+  black.classList.add("active");
+  taskTitleShow.innerHTML = taskTitle4;
+  start();
+});
+
+document.querySelector(".timerStart5").addEventListener('click', function() {
+  timerModal.classList.add("active");
+  black.classList.add("active");
+  taskTitleShow.innerHTML = taskTitle5;
+  start();
+});
+
 document.getElementById("timerModalClose").addEventListener('click', function() {
   timerModal.classList.remove("active");
   black.classList.remove("active");
@@ -128,79 +151,5 @@ document.getElementById("timerModalClose").addEventListener('click', function() 
 
 
 
-//これより下には何も記述しないこと
-//タスクが5個ないとエラーが起きコードが実行されないため
-document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
-  start();
-});
-
-document.getElementsByClassName("timerStart")[1].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
-  start();
-});
-
-document.getElementsByClassName("timerStart")[2].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
-  start();
-});
-
-document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
-  start();
-});
-
-document.getElementsByClassName("timerStart")[4].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
-  start();
-});
 
 
-
-
-
-//各タスクの開始ボタンを機能
-//document.querySelector(".timerStart1").addEventListener('click', function() {
-//  timerModal.classList.add("active");
-//  black.classList.add("active");
-//  taskTitleShow.innerHTML = taskTitle1;
-//  start();
-//});
-//
-//document.querySelector(".timerStart2").addEventListener('click', function() {
-//  timerModal.classList.add("active");
-//  black.classList.add("active");
-//  taskTitleShow.innerHTML = taskTitle2;
-//  start();
-//});
-//
-//document.querySelector(".timerStart3").addEventListener('click', function() {
-//  timerModal.classList.add("active");
-//  black.classList.add("active");
-//  taskTitleShow.innerHTML = taskTitle3;
-//  start();
-//});
-//
-//document.querySelector(".timerStart4").addEventListener('click', function() {
-//  timerModal.classList.add("active");
-//  black.classList.add("active");
-//  taskTitleShow.innerHTML = taskTitle4;
-//  start();
-//});
-//
-//document.querySelector(".timerStart5").addEventListener('click', function() {
-//  timerModal.classList.add("active");
-//  black.classList.add("active");
-//  taskTitleShow.innerHTML = taskTitle5;
-//  start();
-//});

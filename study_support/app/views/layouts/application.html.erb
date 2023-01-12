@@ -16,7 +16,7 @@
         <ul>
           <% if user_signed_in? %>
             <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
-            <li><%= link_to homes_my_page_path(@user), class: "headerTextColor" do %>マイページ<%end%></li>
+            <li><%= link_to homes_my_page_path, class: "headerTextColor" do %>マイページ<%end%></li>
             <li><%= link_to destroy_user_session_path, method: :delete, class: "headerTextColor" do %>ログアウト<%end%></li>
           <%else%>
             <li><%= link_to user_session_path, class: "headerTextColor" do %>ログイン<%end%></li>

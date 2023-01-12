@@ -16,16 +16,18 @@
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
-    <% @tasks.each.with_index(1) do |tasks, index| %>
+    <% @tasks.each do |tasks| %>
       <div class="taskList">
-        <div id="taskTitle<%= index %>"><%= tasks.title %></div>
+        
+        <div class="taskTitle"><%= tasks.title %></div>
+        
         <div class="btnRightBottom">
           <span class="deleteButton"><%= link_to "削除", task_path(tasks.id), method: :delete %></span>
           
           <span class="btnBlue"><%= link_to "編集", edit_task_path(tasks.id) %></span>
           
           <span class="btnGreen"><%= link_to "詳細", task_path(tasks.id) %></span>
-          <div class="timerStart<%= index %>">開始</div>
+          <div class="timerStart">開始</div>
         </div>
       </div>
     <%end%>
