@@ -158,19 +158,30 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  height: 300px;
-  width: 250px;
+  height: 400px;
+  width: 500px;
   border-radius: 10px;
   text-align: center;
-  
   opacity: 0;
-  
-  
   pointer-events: none;
 }
 
 .activeTask {
-  
+  margin-top: 10px;
+}
+
+#taskTitleShow {
+  margin-top: 10px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.timer {
+  background-color: #FFE4E1;
+  width: 250px;
+  border-radius: 50px;
+  margin: 10px auto 20px;
 }
 
 #min {
@@ -189,6 +200,33 @@
   position: absolute;
   top: 10%;
 }
+
+#start, #stop {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 15px 10px 15px;
+  border-radius: 25px;
+  background-color: #00FA9A;
+  font-size: 15px;
+}
+
+#timerModalClose {
+  display: block;
+  margin: 20px auto;
+  background: none;
+  text-align: center;
+  border: 2px solid #00FA9A;
+  padding: 14px 36px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#timerModalClose:hover {
+  background: #00FA9A;
+}
+
+
 
 //モーダル用背景色
 #black {

@@ -3,7 +3,7 @@
   <div id="taskModal">
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
-      <%= f.text_field :title, placeholder: "タスク名を記入", class: "name" %>
+      <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
       <%= f.submit "作成", class: "signup" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
@@ -57,14 +57,15 @@
     <div class="activeTask">作業中のタスク</div>
     <div id="taskTitleShow"></div>
     
-    <div id="timer">
+    <div class="timer">
       <div id="min"></div>
       <span style="font-size: 50px;">:</span>
       <div id="sec"></div>
     </div>
     
-    <div id="start">再開</div>
-    <div id="stop">停止</div>
+    <div id="start"><i class="fa-solid fa-play"></i></div>
+    <span>　</span>
+    <div id="stop"><i class="fa-solid fa-stop"></i></div>
     <button id="timerModalClose">とじる</button>
   </div>
   

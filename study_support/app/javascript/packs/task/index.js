@@ -48,6 +48,7 @@ progressMin();
 progressSec();
 
 function start() {
+  reset();
   if (interval == null) {
     interval = setInterval(function(){
       secTime--;
