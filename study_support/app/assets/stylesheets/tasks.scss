@@ -22,6 +22,8 @@
   box-shadow: 5px 5px 5px gray;
 }
 
+
+
 //作成したToDo項目,start
 .taskList {
   position: relative;
@@ -125,15 +127,29 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 50px;
+  height: 250px;
+  width: 400px;
   border-radius: 10px;
+  text-align: center;
   opacity: 0;
   pointer-events: none;
 }
 
 #taskModalClose {
-  
+  background: none;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 36px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
 }
+
+#taskModalClose:hover {
+  background: #2ecc71;
+}
+
+
 
 //タイマーモーダル
 #timerModal {
@@ -141,11 +157,32 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: gray;
-  padding: 150px 100px;
+  background-color: white;
+  height: 300px;
+  width: 250px;
   border-radius: 10px;
+  text-align: center;
+  
   opacity: 0;
+  
+  
   pointer-events: none;
+}
+
+.activeTask {
+  
+}
+
+#min {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#sec {
+  display: inline-block;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
 #taskTitle {
@@ -171,6 +208,8 @@
   z-index: 10;
 }
 
+
+
 //タイマーモーダル
 #timerModal.active {
   opacity: 1;
@@ -184,6 +223,8 @@
   z-index: 10;
 }
 
+
+
 //タスク編集モーダル
 #taskEdit {
   position: fixed;
@@ -193,6 +234,7 @@
   padding: 50px;
   background-color: red;
 }
+
 
 
 //ここから先はゲスト用

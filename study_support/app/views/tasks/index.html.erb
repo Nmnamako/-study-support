@@ -1,12 +1,12 @@
 <div id="container">
   <div id="black"></div>
   <div id="taskModal">
-    <p>タスク作成</p>
+    <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
-      <%= f.text_field :title %>
-      <%= f.submit "タスク作成" %>
+      <%= f.text_field :title, placeholder: "タスク名を記入", class: "name" %>
+      <%= f.submit "作成", class: "signup" %>
     <%end%>
-    <button id="taskModalClose">とじる</button>
+    <button id="taskModalClose" >とじる</button>
   </div>
   
   <div id="breakTime"></div>
@@ -54,11 +54,12 @@
   
   <!--タイマー用モーダル-->
   <div id="timerModal">
-    <div class="">作業中のタスク</div>
+    <div class="activeTask">作業中のタスク</div>
     <div id="taskTitleShow"></div>
     
     <div id="timer">
       <div id="min"></div>
+      <span style="font-size: 50px;">:</span>
       <div id="sec"></div>
     </div>
     

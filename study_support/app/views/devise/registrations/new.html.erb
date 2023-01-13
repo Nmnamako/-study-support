@@ -4,19 +4,19 @@
     <h2>Sign up</h2>
     
     <div class="field">
-      <%= f.text_field :name, class: "name", placeholder: "name" %>
+      <%= f.text_field :name, class: "name", placeholder: "name", required: true %>
     </div>
   
     <div>
-      <%= f.email_field :email, autocomplete: "email", class: "email", placeholder: "email" %>
+      <%= f.email_field :email, autocomplete: "email", class: "email", placeholder: "email", required: true %>
     </div>
   
     <div>
-      <%= f.password_field :password, autocomplete: "new-password", class: "password", placeholder: "password(6文字以上)" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "password", placeholder: "password(6文字以上)", required: true %>
     </div>
   
     <div>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password", placeholder: "password(再確認)" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password", placeholder: "password(再確認)", required: true %>
     </div>
   
     <div>

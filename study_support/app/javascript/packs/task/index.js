@@ -16,7 +16,7 @@ let taskTitleShow = document.getElementById("taskTitleShow")
 //カウントダウンタイマー関係
 //時間格納用
 let minTime = 25;
-let secTime = 0;
+let secTime = "00";
 
 //タイマー停止用
 let interval;
@@ -37,7 +37,7 @@ let changeTime = false;
 
 //minとsecにタイマー表示
 function progressMin(){
-  document.getElementById("min").textContent = minTime + "：";
+  document.getElementById("min").textContent = minTime;
 };
 
 function progressSec() {
@@ -91,13 +91,13 @@ function reset() {
   if (changeTime == true) {
     //休憩時間
     minTime = 5;
-    secTime = 0;
+    secTime = "00";
     progressSec();
     progressMin();
   } else {
     //作業時間
     minTime = 25;
-    secTime = 0;
+    secTime = "00";
     progressSec();
     progressMin();
   };
