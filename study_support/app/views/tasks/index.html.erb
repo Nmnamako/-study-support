@@ -23,6 +23,11 @@
         <div class="taskList">
           <div class="taskName">タスク名：</div>
           <div class="taskTitle"><%= tasks.title %></div>
+          
+          <div>
+            
+          </div>
+          
           <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">
@@ -66,6 +71,8 @@
     <div id="start"><i class="fa-solid fa-play"></i></div>
     <span>　</span>
     <div id="stop"><i class="fa-solid fa-stop"></i></div>
+    <div class="confirmation">停止ボタンを押してください</div>
+    <div class="timeRecord">時間を記録</div>
     <button id="timerModalClose">とじる</button>
   </div>
   

@@ -12,6 +12,12 @@ let taskTitleShow = document.getElementById("taskTitleShow")
 //let taskTitle4 = document.getElementById("taskTitle4").innerHTML;
 //let taskTitle5 = document.getElementById("taskTitle5").innerHTML;
 
+//クラスの有無判別のため宣言
+const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
+const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
+const timerStartCheck3 = document.getElementsByClassName("timerStart")[2];
+const timerStartCheck4 = document.getElementsByClassName("timerStart")[3];
+const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 
 //カウントダウンタイマー関係
 //時間格納用
@@ -48,7 +54,6 @@ progressMin();
 progressSec();
 
 function start() {
-  reset();
   if (interval == null) {
     interval = setInterval(function(){
       secTime--;
@@ -126,50 +131,69 @@ document.getElementById("taskModalClose").addEventListener('click', function(){
 });
 
 document.getElementById("timerModalClose").addEventListener('click', function() {
-  timerModal.classList.remove("active");
-  black.classList.remove("active");
+  if (interval == null) {
+    timerModal.classList.remove("active");
+    black.classList.remove("active");
+    document.getElementsByClassName("confirmation")[0].classList.remove("active")
+  } else {
+    document.getElementsByClassName("confirmation")[0].classList.add("active")
+  };
 });
 
 
 
 //これより下には何も記述しないこと
 //タスクが5個ないとエラーが起きコードが実行されないため
-document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
-  start();
-});
+//if構文でエラー解消,クラスがなければ処理を実行しないように修正
+if (timerStartCheck1.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
+    start();
+  });
+};
 
-document.getElementsByClassName("timerStart")[1].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
-  start();
-});
+if (timerStartCheck2.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[1].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
+    start();
+  });
+};
 
-document.getElementsByClassName("timerStart")[2].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
-  start();
-});
+if (timerStartCheck3.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[2].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
+    start();
+  });
+};
 
-document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
-  start();
-});
+if (timerStartCheck4.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
+    start();
+  });
+};
 
-document.getElementsByClassName("timerStart")[4].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
-  start();
-});
-
-
+if (timerStartCheck5.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[4].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
+    start();
+  });
+};
 
 
 
