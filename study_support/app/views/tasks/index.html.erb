@@ -23,11 +23,6 @@
         <div class="taskList">
           <div class="taskName">タスク名：</div>
           <div class="taskTitle"><%= tasks.title %></div>
-          
-          <div>
-            
-          </div>
-          
           <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">
@@ -75,6 +70,14 @@
     <div class="timeRecord">時間を記録</div>
     <button id="timerModalClose">とじる</button>
   </div>
+  
+  <!--時間記録代入用-->
+  <div>
+    <%= form_with model: @usage_time, url: new_usage_time_path , method: :post do |f| %>
+      <%= f.hidden_field :elapsed_time, :value => "test", id: "testppp" %>
+    <%end%>
+  </div>
+  
   
 </div>
 

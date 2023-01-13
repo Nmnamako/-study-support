@@ -24,6 +24,9 @@ const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 let minTime = 25;
 let secTime = "00";
 
+//記録時間
+let minRecord = -1;
+
 //タイマー停止用
 let interval;
 
@@ -53,24 +56,34 @@ function progressSec() {
 progressMin();
 progressSec();
 
+//2セット目開始すると1分余分に+されてしまう
+function progressMinRecord() {
+  if (changeTime == false) {
+    minRecord++;
+    document.getElementById("testppp").value = minRecord;
+  };
+};
+
+
 function start() {
   if (interval == null) {
-    interval = setInterval(function(){
+    interval = setInterval(function() {
       secTime--;
       progressSec();
-      if (secTime == -1){
-        secTime = 59;
+      if (secTime == -1) {
+        secTime = 3;
         minTime--;
         progressSec();
         progressMin();
-        if (minTime == -1 && changeTime == false ){
+        
+        progressMinRecord();
+        if (minTime == -1 && changeTime == false ) {
           
           //次の作業のためにtrueに変更
           changeTime = true;
           clearInterval(interval);
           reset();
           interval = null;
-          
           //alertだが、音で知らせてノーストップで時間を進める予定
           alert("休憩時間です");
         } else if (minTime == -1 && changeTime == true) {
@@ -102,7 +115,7 @@ function reset() {
     progressMin();
   } else {
     //作業時間
-    minTime = 25;
+    minTime = 3;
     secTime = "00";
     progressSec();
     progressMin();
@@ -142,9 +155,14 @@ document.getElementById("timerModalClose").addEventListener('click', function() 
 
 
 
+
+
+
+
 //これより下には何も記述しないこと
 //タスクが5個ないとエラーが起きコードが実行されないため
 //if構文でエラー解消,クラスがなければ処理を実行しないように修正
+//検証にてエラー確認if構文の削除か修正どちらかを行う
 if (timerStartCheck1.classList.contains("timerStart")) {
   document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
     reset();

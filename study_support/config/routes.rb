@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   
   
   resources :tasks, only: [:new, :index, :show, :edit, :update, :create, :destroy]
+  resources :usage_times, only: [:new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
