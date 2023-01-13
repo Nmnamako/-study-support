@@ -1,4 +1,15 @@
-
-<div>ようこそ</div>
-  <%= link_to "こちら", tasks_path %>
+<div class="container">
+  <div class="space"></div>
+  <div class="row">
+    <div class="col">
+      <div class="text">STUDY SUPPORT</div>
+      
+      <div class="text">
+        このサイトはポモドーロタイマーを使ったサポートサイトです
+      </div>
+      
+      <div style="margin-top: 10px;"><%= link_to "はじめる", tasks_path, class: "smpleLogin" %></div>
+      <div><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "guestLogin", method: :post %></div>
+    </div>
+  </div>
 </div>

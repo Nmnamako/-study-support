@@ -76,5 +76,8 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
-
+# ログイン機能
 gem "devise"
+
+# 非同期通信のため導入
+gem "jquery-rails"
