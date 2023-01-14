@@ -25,7 +25,7 @@ let minTime = 25;
 let secTime = "00";
 
 //記録時間
-let minRecord = -1;
+let minRecord = 0;
 
 //タイマー停止用
 let interval;
@@ -58,11 +58,17 @@ progressSec();
 
 //2セット目開始すると1分余分に+されてしまう
 function progressMinRecord() {
-  if (changeTime == false) {
+  if (secTime == 0 && changeTime == false) {
     minRecord++;
     document.getElementById("testppp").value = minRecord;
   };
 };
+
+function minRecordReset() {
+  minRecord = 0;
+  document.getElementById("testppp").value = minRecord;
+};
+
 
 
 function start() {
@@ -70,15 +76,13 @@ function start() {
     interval = setInterval(function() {
       secTime--;
       progressSec();
+      progressMinRecord();
       if (secTime == -1) {
-        secTime = 3;
+        secTime = 59;
         minTime--;
         progressSec();
         progressMin();
-        
-        progressMinRecord();
         if (minTime == -1 && changeTime == false ) {
-          
           //次の作業のためにtrueに変更
           changeTime = true;
           clearInterval(interval);
@@ -115,7 +119,7 @@ function reset() {
     progressMin();
   } else {
     //作業時間
-    minTime = 3;
+    minTime = 25;
     secTime = "00";
     progressSec();
     progressMin();
@@ -170,6 +174,7 @@ if (timerStartCheck1.classList.contains("timerStart")) {
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
     start();
+    minRecordReset();
   });
 };
 
@@ -180,6 +185,7 @@ if (timerStartCheck2.classList.contains("timerStart")) {
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
     start();
+    minRecordReset();
   });
 };
 
@@ -190,6 +196,7 @@ if (timerStartCheck3.classList.contains("timerStart")) {
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
     start();
+    minRecordReset();
   });
 };
 
@@ -200,6 +207,7 @@ if (timerStartCheck4.classList.contains("timerStart")) {
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
     start();
+    minRecordReset();
   });
 };
 
@@ -210,6 +218,7 @@ if (timerStartCheck5.classList.contains("timerStart")) {
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
     start();
+    minRecordReset();
   });
 };
 
