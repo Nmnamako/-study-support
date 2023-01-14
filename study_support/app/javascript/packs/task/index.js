@@ -12,6 +12,13 @@ let taskTitleShow = document.getElementById("taskTitleShow")
 //let taskTitle4 = document.getElementById("taskTitle4").innerHTML;
 //let taskTitle5 = document.getElementById("taskTitle5").innerHTML;
 
+//
+//let idAcquisition1 = document.getElementsByClassName("taskId")[0].innerHTML
+//let idAcquisition2 = document.getElementsByClassName("taskId")[1].innerHTML
+let idAcquisition1 = document.getElementById("idAcquisition")
+
+
+
 //クラスの有無判別のため宣言
 const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
 const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
@@ -175,6 +182,7 @@ if (timerStartCheck1.classList.contains("timerStart")) {
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
     start();
     minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[0].innerHTML
   });
 };
 
@@ -186,6 +194,7 @@ if (timerStartCheck2.classList.contains("timerStart")) {
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
     start();
     minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[1].innerHTML
   });
 };
 
@@ -197,6 +206,7 @@ if (timerStartCheck3.classList.contains("timerStart")) {
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
     start();
     minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[2].innerHTML
   });
 };
 
@@ -208,6 +218,7 @@ if (timerStartCheck4.classList.contains("timerStart")) {
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
     start();
     minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[3].innerHTML
   });
 };
 
@@ -219,6 +230,7 @@ if (timerStartCheck5.classList.contains("timerStart")) {
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
     start();
     minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[4].innerHTML
   });
 };
 
