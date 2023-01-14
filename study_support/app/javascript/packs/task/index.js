@@ -67,13 +67,13 @@ progressSec();
 function progressMinRecord() {
   if (secTime == 0 && changeTime == false) {
     minRecord++;
-    document.getElementById("testppp").value = minRecord;
+    document.getElementById("elapsedTime").value = minRecord;
   };
 };
 
 function minRecordReset() {
   minRecord = 0;
-  document.getElementById("testppp").value = minRecord;
+  document.getElementById("elapsedTime").value = minRecord;
 };
 
 

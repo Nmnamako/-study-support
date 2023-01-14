@@ -14,6 +14,7 @@
   <% if user_signed_in? %>
     <div id="taskCreation">タスク作成</div>
   <%end%>
+  <p id="notice"><%= notice %></p>
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
@@ -26,6 +27,7 @@
           
           <!---->
           <div class="taskId"><%= tasks.id %></div>
+          
           <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">
@@ -73,7 +75,7 @@
     
     <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
       <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
-      <%= f.hidden_field :elapsed_time, :value => 0, id: "testppp" %>
+      <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
       <%= f.submit "時間を記録", class: "timeRecord" %>
     <%end%>
 

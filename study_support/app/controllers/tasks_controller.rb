@@ -5,8 +5,9 @@ class TasksController < ApplicationController
     @task = Task.new
     #ログインユーザーのみ表示させる
     if user_signed_in?
-      @tasks = @user.task
+      @tasks = @user.tasks
     end
+    @usage_time = UsageTime.new
   end
   
   def create
