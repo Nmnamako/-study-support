@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   # ゲストユーザー用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    get 'users/sign_out' => 'devise/sessions#destroy'
   end
   
   
-  resources :tasks, only: [:new, :index, :show, :edit, :update, :create, :destroy]
+  resources :tasks, only: [:new, :index, :edit, :update, :create, :destroy]
   resources :usage_times, only: [:new, :create]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

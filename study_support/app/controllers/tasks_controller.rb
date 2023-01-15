@@ -29,9 +29,7 @@ class TasksController < ApplicationController
   
   # 部分テンプレートにてshow作成したが不要かもしれない
   # グラフ関係で使う
-  def show
-    # @task = Task.find(params[:id])
-  end
+  
   
   def destroy
     @task = Task.find(params[:id])

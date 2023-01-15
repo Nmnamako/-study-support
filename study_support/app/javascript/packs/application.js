@@ -12,5 +12,12 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+
 // 非同期通信のため導入
-import "jquery";
+//注意！！！
+//非同期のため導入したがタスク削除のlink_toのmethod: :deleteが、GETとしてHTTPリクエストされる問題が発生
+//HTMLはGETとPOSTしか対応していない。後のHTTPはJSファイルが送信している。
+//調べた結果送信時にJSファイルが関与していない可能性がある。現状はこれ以上わからない。
+//原因特定できなければ非同期通信は非採用にする。現状はコメントアウトし現状維持
+//import "jquery";
