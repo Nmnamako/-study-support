@@ -16,5 +16,7 @@ class UsersController < ApplicationController
     @four_days_ago_times = @times.created_four_days_ago
     @five_days_ago_times = @times.created_four_days_ago
     @six_days_ago_times = @times.created_six_days_ago
+    
+    pp @two_days_ago_times
   end
 end
