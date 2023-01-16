@@ -8,10 +8,14 @@
   <%end%>
 </div>
 
-<div><%= @today_time %></div>
+<div class="test"><%= @today_time.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @yesterday_times.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @two_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @three_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @four_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @five_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @six_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
 
-
-<div><%= @usage_time_yesterday_usage_times %></div>
 <div class="myPageBack">
   <div class="myPageChart">
     <!--統計グラフ-->
@@ -19,6 +23,16 @@
     <canvas id="myChart"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+      const day = document.getElementsByClassName("test")[0].innerHTML
+      const day1 = document.getElementsByClassName("test")[1].innerHTML
+      const day2 = document.getElementsByClassName("test")[2].innerHTML
+      const day3 = document.getElementsByClassName("test")[3].innerHTML
+      const day4 = document.getElementsByClassName("test")[4].innerHTML
+      const day5 = document.getElementsByClassName("test")[5].innerHTML
+      const day6 = document.getElementsByClassName("test")[6].innerHTML
+      
+    
+    
       const ctx = document.getElementById('myChart');
       new Chart(ctx, {
         type: 'bar',
@@ -27,7 +41,7 @@
           datasets: [{
             tension: 0.3,
             label: '1週間の時間',
-            data: [1,2,3,4,0.5,<% @today_time %>],
+            data: [day6,day5,day4,day3,day2,day1,day],
             
             //barの色、太さ、線の色
             backgroundColor: [ '#B0E0E6' ],
