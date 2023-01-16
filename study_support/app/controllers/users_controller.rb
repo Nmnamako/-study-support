@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
   
-  def show
+  def my_page
     @user = current_user
-    @tasks = @user.tasks
+    @times = @user.usage_times
+    @task = @user.tasks
+    
+    
+    @usage_time = UsageTime.all
+    
+    @today_time = @times.created_today
+    @yesterday_times = @times.created_yesterday.pluck(:elapsed_time)
+
+    
+    
+    
+    pp @today_time
   end
   
 end
