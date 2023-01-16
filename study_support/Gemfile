@@ -81,3 +81,6 @@ gem "devise"
 
 # 非同期通信のため導入
 gem "jquery-rails"
+
+# 音楽再生機能導入
+gem 'audiojs-rails'

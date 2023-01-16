@@ -13,6 +13,10 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
+// mp3再生のため導入
+//= require audiojs
+
+
 
 // 非同期通信のため導入
 //注意！！！
