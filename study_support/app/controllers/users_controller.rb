@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     @five_days_ago_times = @times.created_four_days_ago
     @six_days_ago_times = @times.created_six_days_ago
     
-    pp @two_days_ago_times
+    @aaa = @today_time.pluck(:elapsed_time)
+    
+    
+    
+    pp @today_time
   end
 end

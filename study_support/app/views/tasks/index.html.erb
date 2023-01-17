@@ -25,6 +25,9 @@
           <div class="taskName">タスク名：</div>
           <div class="taskTitle"><%= tasks.title %></div>
           
+          <!--時間記録時にID取得に必須-->
+          <div class="taskId"><%= tasks.id %></div>
+          
           <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">

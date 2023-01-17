@@ -8,13 +8,18 @@
   <%end%>
 </div>
 
-<div class="test"><%= @today_time.pluck(:elapsed_time).join(" ") %></div>
-<div class="test"><%= @yesterday_times.pluck(:elapsed_time).join(" ") %></div>
-<div class="test"><%= @two_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
-<div class="test"><%= @three_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
+<div class="test"><%= @today_time.pluck(:elapsed_time) %></div>
+<div class="test"><%= @yesterday_times.pluck(:elapsed_time) %></div>
+<div class="test"><%= @two_days_ago_times.pluck(:elapsed_time) %></div>
+<div class="test"><%= @three_days_ago_times.pluck(:elapsed_time) %></div>
 <div class="test"><%= @four_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
 <div class="test"><%= @five_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
 <div class="test"><%= @six_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
+
+
+<div>テスト中</div>
+<div><%= @aaa %></div>
+
 
 <div class="myPageBack">
   <div class="myPageChart">
@@ -31,9 +36,29 @@
       const day5 = document.getElementsByClassName("test")[5].innerHTML
       const day6 = document.getElementsByClassName("test")[6].innerHTML
       
-      console.log(day2.length)
       
       
+      let eeew = day.replace(/[^0-9]/g, '');
+      let wwwe = eeew.split(',').map(Number);
+      //let result = Object.values(wwwe);
+      //let results = wwwe.reduce((prev,current)=>prev * current,0)
+      //console.log(results);
+      
+      const array1 = [1, 2, 3, 4];
+
+      // 0 + 1 + 2 + 3 + 4
+      const initialValue = 0;
+      const sumWithInitial = wwwe.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+      );
+      
+      console.log(wwwe);
+      
+      
+      
+      
+    
     
     
       const ctx = document.getElementById('myChart');
