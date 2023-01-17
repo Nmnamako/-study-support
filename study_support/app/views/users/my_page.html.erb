@@ -1,59 +1,35 @@
-<h1>マイページ</h1>
-
-<div>
-  <% @usage_time.each do |tasks| %>
-    <% if current_user.id == tasks.user_id %>
-      <%= tasks.elapsed_time %>
-    <%end%>
-  <%end%>
-</div>
-
-<div class="test"><%= @today_time.pluck(:elapsed_time) %></div>
-<div class="test"><%= @yesterday_times.pluck(:elapsed_time) %></div>
-<div class="test"><%= @two_days_ago_times.pluck(:elapsed_time) %></div>
-<div class="test"><%= @three_days_ago_times.pluck(:elapsed_time) %></div>
-<div class="test"><%= @four_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
-<div class="test"><%= @five_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
-<div class="test"><%= @six_days_ago_times.pluck(:elapsed_time).join(" ") %></div>
-
-
-<div>テスト中</div>
-<div><%= @aaa %></div>
-
-
 <div class="myPageBack">
   <div class="myPageChart">
     <!--統計グラフ-->
-    <div class="text-center">７日間の作業比率</div>
+    <div class="text-center">1週間の作業比率</div>
     <canvas id="myChart"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-      const day = document.getElementsByClassName("test")[0].innerHTML
-      const day1 = document.getElementsByClassName("test")[1].innerHTML
-      const day2 = document.getElementsByClassName("test")[2].innerHTML
-      const day3 = document.getElementsByClassName("test")[3].innerHTML
-      const day4 = document.getElementsByClassName("test")[4].innerHTML
-      const day5 = document.getElementsByClassName("test")[5].innerHTML
-      const day6 = document.getElementsByClassName("test")[6].innerHTML
+      //const day = document.getElementsByClassName("test")[0].innerHTML
+      //const day1 = document.getElementsByClassName("test")[1].innerHTML
+      //const day2 = document.getElementsByClassName("test")[2].innerHTML
+      //const day3 = document.getElementsByClassName("test")[3].innerHTML
+      //const day4 = document.getElementsByClassName("test")[4].innerHTML
+      //const day5 = document.getElementsByClassName("test")[5].innerHTML
+      //const day6 = document.getElementsByClassName("test")[6].innerHTML
       
       
       
-      let eeew = day.replace(/[^0-9]/g, '');
-      let wwwe = eeew.split(',').map(Number);
+      //let eeew = day.replace(/[^0-9]/g, '');
+      //let wwwe = eeew.split(',').map(Number);
       //let result = Object.values(wwwe);
       //let results = wwwe.reduce((prev,current)=>prev * current,0)
       //console.log(results);
       
-      const array1 = [1, 2, 3, 4];
+      //const array1 = [1, 2, 3, 4];
 
       // 0 + 1 + 2 + 3 + 4
-      const initialValue = 0;
-      const sumWithInitial = wwwe.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        initialValue
-      );
-      
-      console.log(wwwe);
+      //const initialValue = 0;
+      //const sumWithInitial = wwwe.reduce(
+      //  (accumulator, currentValue) => accumulator + currentValue,
+      //  initialValue
+      //);
+      //console.log(wwwe);
       
       
       
@@ -68,8 +44,8 @@
           labels: ['6日前', '５日前', '４日前', '３日前', '２日前', '1日前', '今日'],
           datasets: [{
             tension: 0.3,
-            label: '1週間の時間',
-            data: [day6,day5,day4,day3,day2,day1,day],
+            label: '1週間の作業時間',
+            data: [<%= @day7_total_times %>,<%= @day6_total_times %>,<%= @day5_total_times %>,<%= @day4_total_times %>,<%= @day3_total_times %>,<%= @day2_total_times %>,<%= @day1_total_times %>],
             
             //barの色、太さ、線の色
             backgroundColor: [ '#B0E0E6' ],
