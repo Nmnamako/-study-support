@@ -4,6 +4,7 @@
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
+      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name", required: true %>
       <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
@@ -26,8 +27,12 @@
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
         <div class="taskList">
-          <div class="taskName">タスク名：</div>
+          <div class="taskName">
+            タスク名：<br>
+            　　詳細：
+          </div>
           <div class="taskTitle"><%= tasks.title %></div>
+          <div class="taskBody"><%= tasks.body %></div>
           
           <!--時間記録時にID取得に必須-->
           <div class="taskId"><%= tasks.id %></div>
@@ -44,9 +49,9 @@
     </div>
   <%else%>
   
+    <!--ゲスト用タイマー-->
     <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
     <div class="guestText">ポモドーロタイマーのみご使用できます。</div>
-    
     <div id="guestTimerModal">
       <div id="guestTimer">
         <div id="guestMin"></div>

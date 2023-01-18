@@ -50,9 +50,14 @@
 }
 .taskTitle {
   position: absolute;
-  top: 5px;
+  top: 8px;
   left: 90px;
-  font-size: 20px;
+  font-size: 18px;
+}
+.taskBody {
+  position: absolute;
+  top: 34px;
+  left: 90px;
 }
 
 .btnRightBottom {
@@ -135,7 +140,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  height: 250px;
+  height: 380px;
   width: 400px;
   border-radius: 10px;
   text-align: center;
@@ -372,6 +377,9 @@
   border-radius: 24px;
   transition: 0.3s;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
 }
 
 /* Loginボタンをマウスオーバーしたときのスタイル */
@@ -380,4 +388,12 @@
 }
 
 
-
+textarea {
+  resize: auto;
+  max-height: 100px;
+  max-width: 250px;
+  min-height: 100px;
+  min-width: 100px;
+  width:200px;
+  height:100px
+}
