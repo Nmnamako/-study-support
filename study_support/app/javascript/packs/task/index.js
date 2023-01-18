@@ -155,6 +155,19 @@ document.getElementsByClassName("timerStart")[2].addEventListener('click', funct
   start();
 });
 
+
+document.querySelector(".timerStart4").addEventListener('click', function() {
+  taskModal.classList.add("active");
+  black.classList.add("active");
+});
+
+document.querySelector(".timerStart5").addEventListener('click', function() {
+  taskModal.classList.add("active");
+  black.classList.add("active");
+});
+//タイマー開始押下後、タイマーモーダル展開
+//document.getElementById("timerStart").addEventListener('click', function() {
+
 document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
   timerModal.classList.add("active");
   black.classList.add("active");
@@ -203,6 +216,7 @@ document.getElementsByClassName("timerStart")[4].addEventListener('click', funct
 //});
 //
 //document.querySelector(".timerStart5").addEventListener('click', function() {
+
 //  timerModal.classList.add("active");
 //  black.classList.add("active");
 //  taskTitleShow.innerHTML = taskTitle5;

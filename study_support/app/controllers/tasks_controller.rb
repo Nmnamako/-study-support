@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @task = Task.new
     #ログインユーザーのみ表示させる
     if user_signed_in?
-      @tasks = @user.tasks
+      @tasks = @user.tasks.page(params[:page])
     end
   end
   
