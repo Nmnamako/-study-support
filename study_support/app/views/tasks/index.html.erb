@@ -1,19 +1,5 @@
 <!-- 再生プレイヤー -->
-<%= audio_tag 'jihou.mp3' %>
-<input type="submit" id="operation">
-<script>
-  const operation = document.getElementById("operation");
-  const audioPlayer = audiojs.createAll();
-
-  const audio = audioPlayer[0];
-
-  operation.addEventListener("click", () => {
-    audio.play();
-  });
-</script>
-
-
-</script>
+<%= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
 
 <div id="container">
   <div id="black"></div>
