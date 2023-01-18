@@ -93,6 +93,17 @@
   </div>
 </div>
 
+
+
+<!--kaminari導入テスト-->
+<%= paginate @tasks %>
+
+
+<!--後に使うかも-->
+<!--<%= render "tasks/show", show: @task %>-->
+
+
+
 <!--一番下じゃないとエラーになる-->
 <%= javascript_pack_tag 'task/guestIndex'%>
 <%= javascript_pack_tag 'task/index'%>

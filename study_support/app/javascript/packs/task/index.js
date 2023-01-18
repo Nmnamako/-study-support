@@ -170,6 +170,27 @@ document.getElementById("timerModalClose").addEventListener('click', function() 
 
 
 
+
+document.querySelector(".timerStart4").addEventListener('click', function() {
+  taskModal.classList.add("active");
+  black.classList.add("active");
+});
+
+document.querySelector(".timerStart5").addEventListener('click', function() {
+  taskModal.classList.add("active");
+  black.classList.add("active");
+});
+//タイマー開始押下後、タイマーモーダル展開
+//document.getElementById("timerStart").addEventListener('click', function() {
+
+document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
+  timerModal.classList.add("active");
+  black.classList.add("active");
+  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
+  start();
+});
+
+
 //これより下には何も記述しないこと
 //タスクが5個ないとエラーが起きコードが実行されないため
 //if構文でエラー解消,クラスがなければ処理を実行しないように修正
@@ -266,6 +287,7 @@ if (timerStartCheck5.classList.contains("timerStart")) {
 //});
 //
 //document.querySelector(".timerStart5").addEventListener('click', function() {
+
 //  timerModal.classList.add("active");
 //  black.classList.add("active");
 //  taskTitleShow.innerHTML = taskTitle5;
