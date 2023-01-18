@@ -1,10 +1,10 @@
 <%= form_with model:@task, local:true do |f| %>
-  <div id="taskTitleEdit">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-    <%= f.submit %>
-  </div>
+<div class="taskTitleEdit">
+  <div style="margin-top: 20px;">タイトル</div>
+  <%= f.text_field :title, class: "name" %><br>
+  
+  <%= f.submit "編集を保存", class: "submit" %>
+  <div><%= link_to "編集破棄", tasks_path %><div>
+</div>
   <!--後に内容や日付変更など追加検討-->
 <%end%>
-
-<%= @task.title %>

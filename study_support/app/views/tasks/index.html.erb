@@ -4,11 +4,15 @@
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
-      <%= f.submit "作成", class: "signup" %>
+      <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
   </div>
   
+  
+  
+  
+  <!--休憩時の-->
   <div id="breakTime"></div>
   
   <% if user_signed_in? %>
@@ -73,6 +77,7 @@
     <div id="stop"><i class="fa-solid fa-stop"></i></div>
     <div class="confirmation">停止ボタンを押してください</div>
     
+    <!--時間記録代入用-->
     <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
       <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
       <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
@@ -81,15 +86,7 @@
 
     <button id="timerModalClose">とじる</button>
   </div>
-  
-  <!--時間記録代入用-->
-  
-  
 </div>
-
-
-<!--後に使うかも-->
-<!--<%= render "tasks/show", show: @task %>-->
 
 <!--一番下じゃないとエラーになる-->
 <%= javascript_pack_tag 'task/guestIndex'%>

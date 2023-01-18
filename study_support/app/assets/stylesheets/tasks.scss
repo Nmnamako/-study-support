@@ -298,14 +298,14 @@
 
 
 //タスク編集モーダル
-#taskEdit {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 50px;
-  background-color: red;
-}
+//#taskEdit {
+//  position: fixed;
+//  top: 50%;
+//  left: 50%;
+//  transform: translate(-50%, -50%);
+//  padding: 50px;
+//  background-color: red;
+//}
 
 
 
@@ -349,3 +349,35 @@
   margin: 20px 0 20px 0;
   text-align: center;
 }
+
+
+
+// 編集用CSS
+.taskTitleEdit {
+  box-shadow: 3px 3px 3px 3px gray;
+  margin: 50px auto;
+  text-align: center;
+  height: 400px;
+  width: 300px;
+}
+
+
+/* Loginボタンのスタイル */
+.submit {
+  background: none;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* Loginボタンをマウスオーバーしたときのスタイル */
+.submit:hover {
+  background: #2ecc71;
+}
+
+
+
