@@ -3,9 +3,9 @@ class TasksController < ApplicationController
   def index
     @user = current_user
     @task = Task.new
-    #ログインユーザーのみ表示させる
+    #ログインユーザーのタスクを表示させる
     if user_signed_in?
-      @tasks = @user.tasks
+      @tasks = @user.tasks.page(params[:page])
     end
     @usage_time = UsageTime.new
   end
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title)
+    params.require(:task).permit(:title, :body)
   end
   
 end

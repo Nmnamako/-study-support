@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   get "homes/top" => "homes#top"
   get "homes/my_page" => "homes#my_page"
-  
+  get "users/my_page" => "users#my_page"
   
   # ゲストユーザー用
   devise_scope :user do

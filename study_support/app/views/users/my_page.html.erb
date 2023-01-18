@@ -1,14 +1,9 @@
-<h1>マイページ</h1>
-<div><%= @usage_time_yesterday_usage_times %></div>
-<div><%= @tasks %></div>
 <div class="myPageBack">
   <div class="myPageChart">
     <!--統計グラフ-->
-    <div class="text-center">７日間の作業比率</div>
-    
-      <canvas id="myChart"></canvas>
-    
-    
+    <div style="margin: 5px 0;"><%= current_user.name %>さんの</div>
+    <div style="margin: 5px 0;">1週間の作業時間</div>
+    <canvas id="myChart"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
       const ctx = document.getElementById('myChart');
@@ -18,8 +13,8 @@
           labels: ['6日前', '５日前', '４日前', '３日前', '２日前', '1日前', '今日'],
           datasets: [{
             tension: 0.3,
-            label: '1週間の時間',
-            data: [1,2,3,4,5,<%= @usage_time_yesterday_usage_times %>, <%= @usage_time_today_usage_times %>,],
+            label: '1週間の作業時間',
+            data: [<%= @day7_total_times %>,<%= @day6_total_times %>,<%= @day5_total_times %>,<%= @day4_total_times %>,<%= @day3_total_times %>,<%= @day2_total_times %>,<%= @day1_total_times %>],
             
             //barの色、太さ、線の色
             backgroundColor: [ '#B0E0E6' ],
@@ -32,7 +27,13 @@
             y: {
               beginAtZero: true,
               suggestedMin: 1,
-              suggestedMax: 12
+              suggestedMax: 12,
+              ticks: {
+                // Include a dollar sign in the ticks
+                callback: function(value, index, ticks) {
+                  return value + "h";
+                }
+              }
             }
           }
         }

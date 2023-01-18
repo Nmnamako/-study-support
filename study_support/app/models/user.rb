@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :usage_times, dependent: :destroy
   
+  
+  
+  
+  
+  
   # ゲストユーザー用
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
