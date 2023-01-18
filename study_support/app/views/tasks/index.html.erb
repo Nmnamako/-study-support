@@ -1,15 +1,19 @@
 <!-- 再生プレイヤー -->
-<div class="btn"  onclick="audio()"><%= audio_tag 'jihou.mp3' %>mp3再生</div>
-
+<%= audio_tag 'jihou.mp3' %>
+<input type="submit" id="operation">
 <script>
-  audiojs.events.ready(function() {
-    let as = audiojs.createAll();
-    .audiojs p { ... }
+  const operation = document.getElementById("operation");
+  const audioPlayer = audiojs.createAll();
+
+  const audio = audioPlayer[0];
+
+  operation.addEventListener("click", () => {
+    audio.play();
   });
 </script>
 
 
-
+</script>
 
 <div id="container">
   <div id="black"></div>
