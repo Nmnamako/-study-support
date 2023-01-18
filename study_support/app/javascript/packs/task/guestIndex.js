@@ -10,6 +10,7 @@ let guestInterval;
 //falseかtrueかで、作業時間と休憩時間を変更する
 let guestChangeTime = false;
 
+
 function progressGuestMin() {
   document.getElementById("guestMin").textContent = guestMinTime;
 };

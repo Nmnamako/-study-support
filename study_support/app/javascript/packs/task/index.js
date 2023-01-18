@@ -12,11 +12,27 @@ let taskTitleShow = document.getElementById("taskTitleShow")
 //let taskTitle4 = document.getElementById("taskTitle4").innerHTML;
 //let taskTitle5 = document.getElementById("taskTitle5").innerHTML;
 
+//
+//let idAcquisition1 = document.getElementsByClassName("taskId")[0].innerHTML
+//let idAcquisition2 = document.getElementsByClassName("taskId")[1].innerHTML
+let idAcquisition1 = document.getElementById("idAcquisition")
+
+
+
+//クラスの有無判別のため宣言
+const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
+const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
+const timerStartCheck3 = document.getElementsByClassName("timerStart")[2];
+const timerStartCheck4 = document.getElementsByClassName("timerStart")[3];
+const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 
 //カウントダウンタイマー関係
 //時間格納用
 let minTime = 25;
 let secTime = "00";
+
+//記録時間
+let minRecord = 0;
 
 //タイマー停止用
 let interval;
@@ -47,25 +63,38 @@ function progressSec() {
 progressMin();
 progressSec();
 
+//2セット目開始すると1分余分に+されてしまう
+function progressMinRecord() {
+  if (secTime == 0 && changeTime == false) {
+    minRecord++;
+    document.getElementById("elapsedTime").value = minRecord;
+  };
+};
+
+function minRecordReset() {
+  minRecord = 0;
+  document.getElementById("elapsedTime").value = minRecord;
+};
+
+
+
 function start() {
-  reset();
   if (interval == null) {
-    interval = setInterval(function(){
+    interval = setInterval(function() {
       secTime--;
       progressSec();
-      if (secTime == -1){
+      progressMinRecord();
+      if (secTime == -1) {
         secTime = 59;
         minTime--;
         progressSec();
         progressMin();
-        if (minTime == -1 && changeTime == false ){
-          
+        if (minTime == -1 && changeTime == false ) {
           //次の作業のためにtrueに変更
           changeTime = true;
           clearInterval(interval);
           reset();
           interval = null;
-          
           //alertだが、音で知らせてノーストップで時間を進める予定
           alert("休憩時間です");
         } else if (minTime == -1 && changeTime == true) {
@@ -126,34 +155,20 @@ document.getElementById("taskModalClose").addEventListener('click', function(){
 });
 
 document.getElementById("timerModalClose").addEventListener('click', function() {
-  timerModal.classList.remove("active");
-  black.classList.remove("active");
+  if (interval == null) {
+    timerModal.classList.remove("active");
+    black.classList.remove("active");
+    document.getElementsByClassName("confirmation")[0].classList.remove("active")
+  } else {
+    document.getElementsByClassName("confirmation")[0].classList.add("active")
+  };
 });
 
 
 
-//これより下には何も記述しないこと
-//タスクが5個ないとエラーが起きコードが実行されないため
-document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
-  start();
-});
 
-document.getElementsByClassName("timerStart")[1].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
-  start();
-});
 
-document.getElementsByClassName("timerStart")[2].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
-  start();
-});
+
 
 
 document.querySelector(".timerStart4").addEventListener('click', function() {
@@ -175,14 +190,70 @@ document.getElementsByClassName("timerStart")[3].addEventListener('click', funct
   start();
 });
 
-document.getElementsByClassName("timerStart")[4].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
-  start();
-});
 
+//これより下には何も記述しないこと
+//タスクが5個ないとエラーが起きコードが実行されないため
+//if構文でエラー解消,クラスがなければ処理を実行しないように修正
+//検証にてエラー確認if構文の削除か修正どちらかを行う
+if (timerStartCheck1.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
+    start();
+    minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[0].innerHTML
+  });
+};
 
+if (timerStartCheck2.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[1].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
+    start();
+    minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[1].innerHTML
+  });
+};
+
+if (timerStartCheck3.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[2].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
+    start();
+    minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[2].innerHTML
+  });
+};
+
+if (timerStartCheck4.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
+    start();
+    minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[3].innerHTML
+  });
+};
+
+if (timerStartCheck5.classList.contains("timerStart")) {
+  document.getElementsByClassName("timerStart")[4].addEventListener('click', function() {
+    reset();
+    timerModal.classList.add("active");
+    black.classList.add("active");
+    taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
+    start();
+    minRecordReset();
+    idAcquisition1.value = document.getElementsByClassName("taskId")[4].innerHTML
+  });
+};
 
 
 

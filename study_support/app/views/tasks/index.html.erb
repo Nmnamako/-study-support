@@ -4,16 +4,22 @@
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
-      <%= f.submit "作成", class: "signup" %>
+      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name", required: true %>
+      <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
   </div>
   
+  
+  
+  
+  <!--休憩時の-->
   <div id="breakTime"></div>
   
   <% if user_signed_in? %>
     <div id="taskCreation">タスク作成</div>
   <%end%>
+  <p id="notice"><%= notice %></p>
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
@@ -21,8 +27,16 @@
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
         <div class="taskList">
-          <div class="taskName">タスク名：</div>
+          <div class="taskName">
+            タスク名：<br>
+            　　詳細：
+          </div>
           <div class="taskTitle"><%= tasks.title %></div>
+          <div class="taskBody"><%= tasks.body %></div>
+          
+          <!--時間記録時にID取得に必須-->
+          <div class="taskId"><%= tasks.id %></div>
+          
           <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">
@@ -35,9 +49,9 @@
     </div>
   <%else%>
   
+    <!--ゲスト用タイマー-->
     <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
     <div class="guestText">ポモドーロタイマーのみご使用できます。</div>
-    
     <div id="guestTimerModal">
       <div id="guestTimer">
         <div id="guestMin"></div>
@@ -66,10 +80,19 @@
     <div id="start"><i class="fa-solid fa-play"></i></div>
     <span>　</span>
     <div id="stop"><i class="fa-solid fa-stop"></i></div>
+    <div class="confirmation">停止ボタンを押してください</div>
+    
+    <!--時間記録代入用-->
+    <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
+      <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
+      <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
+      <%= f.submit "時間を記録", class: "timeRecord" %>
+    <%end%>
+
     <button id="timerModalClose">とじる</button>
   </div>
-  
 </div>
+
 
 
 <!--kaminari導入テスト-->
@@ -78,6 +101,7 @@
 
 <!--後に使うかも-->
 <!--<%= render "tasks/show", show: @task %>-->
+
 
 
 <!--一番下じゃないとエラーになる-->

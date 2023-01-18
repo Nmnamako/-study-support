@@ -3,10 +3,11 @@ class TasksController < ApplicationController
   def index
     @user = current_user
     @task = Task.new
-    #ログインユーザーのみ表示させる
+    #ログインユーザーのタスクを表示させる
     if user_signed_in?
       @tasks = @user.tasks.page(params[:page])
     end
+    @usage_time = UsageTime.new
   end
   
   def create
@@ -28,9 +29,7 @@ class TasksController < ApplicationController
   
   # 部分テンプレートにてshow作成したが不要かもしれない
   # グラフ関係で使う
-  def show
-    # @task = Task.find(params[:id])
-  end
+  
   
   def destroy
     @task = Task.find(params[:id])
@@ -41,7 +40,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title)
+    params.require(:task).permit(:title, :body)
   end
   
 end
