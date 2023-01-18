@@ -1,1 +1,20 @@
-<h1>Topページ</h1>
+<div class="container">
+  <div class="space"></div>
+  <div class="row">
+    <div class="col">
+      <div class="text">STUDY SUPPORT</div>
+      
+      <div class="text">
+        このサイトはポモドーロタイマーを使ったサポートサイトです
+      </div>
+      
+      <div style="margin-top: 10px;"><%= link_to "はじめる", tasks_path, class: "smpleLogin" %></div>
+      
+      <% if user_signed_in? %>
+      <%else%>
+        <div><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "guestLogin", method: :post %></div>
+      <%end%>
+        
+    </div>
+  </div>
+</div>

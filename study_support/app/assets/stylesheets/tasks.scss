@@ -1,0 +1,407 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#notice {
+  text-align: center;
+}
+
+
+//タスク作成ボタン
+#taskCreation {
+  margin: 20px auto;
+  background-color: #00FA9A;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  box-shadow: 3px 3px 3px gray;
+  cursor: pointer;
+}
+
+.entireList {
+  background-color: #F8F8FF;
+  padding: 5px 0;
+  width: 50%;
+  margin: 0 auto 30px;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.taskId {
+  display: none;
+}
+
+
+
+//作成したToDo項目,start
+.taskList {
+  position: relative;
+  background-color:	#E6E6FA;
+  margin: 0 auto 20px;
+  height: 150px;
+  width: 700px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.taskName {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.taskTitle {
+  position: absolute;
+  top: 8px;
+  left: 90px;
+  font-size: 18px;
+}
+.taskBody {
+  position: absolute;
+  top: 34px;
+  left: 90px;
+}
+
+.btnRightBottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+  padding: 10px 20px;
+  box-shadow: 3px 3px 3px gray;
+  cursor: pointer;
+}
+
+.editButton {
+  background-color: #00ECFF;
+  border-radius: 15px;
+  padding: 10px 30px;
+  margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
+}
+
+.showButoon {
+  background-color: #B6FF01;
+  border-radius: 15px;
+  padding: 10px 30px;
+  margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
+}
+
+.timerStart {
+  background-color: #FF1A6F;
+  border-radius: 15px;
+  padding: 10px 30px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
+}
+
+//.timerStart2 {
+//  background-color: #FF1A6F;
+//  border-radius: 15px;
+//  padding: 10px 30px;
+//  cursor: pointer;
+//}
+//
+//.timerStart3 {
+//  background-color: #FF1A6F;
+//  border-radius: 15px;
+//  padding: 10px 30px;
+//  cursor: pointer;
+//}
+//
+//.timerStart4 {
+//  background-color: #FF1A6F;
+//  border-radius: 15px;
+//  padding: 10px 30px;
+//  cursor: pointer;
+//}
+//
+//.timerStart5 {
+//  background-color: #FF1A6F;
+//  border-radius: 15px;
+//  padding: 10px 30px;
+//  cursor: pointer;
+//}
+//作成したToDo項目,end
+
+
+//タスクモーダル
+#taskModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 380px;
+  width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#taskModalClose {
+  background: none;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 36px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#taskModalClose:hover {
+  background: #2ecc71;
+}
+
+
+
+//タイマーモーダル
+#timerModal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 480px;
+  width: 500px;
+  border-radius: 10px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.activeTask {
+  margin-top: 10px;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.pagination-list {
+  text-align: center;
+ }
+ 
+#taskTitleShow {
+  margin-top: 10px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.timer {
+  background-color: #FFE4E1;
+  width: 250px;
+  border-radius: 50px;
+  margin: 10px auto 20px;
+}
+
+#min {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#sec {
+  display: inline-block;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+#taskTitle {
+  position: absolute;
+  top: 10%;
+}
+
+#start, #stop {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 15px 10px 15px;
+  border-radius: 25px;
+  background-color: #00FA9A;
+  font-size: 15px;
+}
+
+.confirmation {
+  opacity: 0;
+}
+
+.confirmation.active {
+  color: red;
+  margin: 10px 0;
+  opacity: 1;
+}
+
+.timeRecord {
+  display: inline-block;
+  margin: 0 auto;
+  background: none;
+  text-align: center;
+  border: 2px solid #00FA9A;
+  padding: 14px 20px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.timeRecord:hover {
+  background: #00FA9A;
+}
+
+#timerModalClose {
+  display: block;
+  margin: 20px auto;
+  background: none;
+  text-align: center;
+  border: 2px solid #00FA9A;
+  padding: 14px 36px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#timerModalClose:hover {
+  background: #00FA9A;
+}
+
+
+
+//モーダル用背景色
+#black {
+  position:fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#taskModal.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+
+
+//タイマーモーダル
+#timerModal.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+#black.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+
+
+//タスク編集モーダル
+//#taskEdit {
+//  position: fixed;
+//  top: 50%;
+//  left: 50%;
+//  transform: translate(-50%, -50%);
+//  padding: 50px;
+//  background-color: red;
+//}
+
+
+
+//ここから先はゲスト用
+//ゲスト用タイマー
+#guestTimer {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #87CEEB;
+  height: 200px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 3px gray;
+}
+
+#guestMin {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#guestSec {
+  display: inline-block;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+#guestStart, #guestStop {
+  padding: 5px 30px;
+  border-radius: 20px;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
+}
+
+#guestStart:hover, #guestStop:hover {
+  background: #2ecc71;
+}
+
+.guestText {
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+
+
+// 編集用CSS
+.taskTitleEdit {
+  box-shadow: 3px 3px 3px 3px gray;
+  margin: 50px auto;
+  text-align: center;
+  height: 400px;
+  width: 300px;
+}
+
+
+/* Loginボタンのスタイル */
+.submit {
+  background: none;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  border-radius: 24px;
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+
+/* Loginボタンをマウスオーバーしたときのスタイル */
+.submit:hover {
+  background: #2ecc71;
+}
+
+
+textarea {
+  resize: auto;
+  max-height: 100px;
+  max-width: 250px;
+  min-height: 100px;
+  min-width: 100px;
+  width:200px;
+  height:100px
+}

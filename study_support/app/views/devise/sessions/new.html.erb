@@ -1,0 +1,17 @@
+<div class="box">
+  <h2>Log in</h2>
+  
+  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <div>
+      <%= f.email_field :email, class: "email", autocomplete: "email", placeholder: "email", required: true %>
+    </div>
+  
+    <div>
+      <%= f.password_field :password, class: "password", autocomplete: "current-password", placeholder: "password", required: true %>
+    </div>
+  
+    <div>
+      <%= f.submit "Log in", class: "login" %>
+    </div>
+  <% end %>
+</div>

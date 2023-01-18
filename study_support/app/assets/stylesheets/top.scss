@@ -1,0 +1,50 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container {
+  background-color: #F0F8FF;
+  height: 100vh;
+}
+
+.space {
+  padding-top: 200px;
+}
+
+.row {
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 0 auto;
+  border: 5px double gray;
+
+}
+
+.col {
+  text-align: center;
+  margin-top: 30%;
+}
+
+.text {
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.smpleLogin {
+  color: black;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 20px;
+  position: relative;
+  background: linear-gradient(transparent 40%, yellow 40%);
+}
+
+.guestLogin {
+  color: black;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 20px;
+  position: relative;
+  background: linear-gradient(transparent 40%, yellow 40%);
+}

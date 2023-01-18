@@ -1,0 +1,9 @@
+<h1>テスト</h1>
+
+<div>
+  <% @usage_time.each do |tasks| %>
+    <% if current_user.id == tasks.user_id %>
+      <%= tasks.elapsed_time %>
+    <%end%>
+  <%end%>
+</div>
