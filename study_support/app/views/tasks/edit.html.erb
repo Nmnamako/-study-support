@@ -1,1 +1,10 @@
-<h1>タスク編集ページ</h1>
+<%= form_with model:@task, local:true do |f| %>
+  <div id="taskTitleEdit">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    <%= f.submit %>
+  </div>
+  <!--後に内容や日付変更など追加検討-->
+<%end%>
+
+<%= @task.title %>

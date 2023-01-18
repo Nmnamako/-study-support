@@ -3,7 +3,6 @@ class TasksController < ApplicationController
   def index
     @user = current_user
     @task = Task.new
-    
     #ログインユーザーのみ表示させる
     if user_signed_in?
       @tasks = @user.tasks.page(params[:page])
@@ -21,8 +20,22 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   
-  def show
+  def update
     @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to tasks_path
+  end
+  
+  # 部分テンプレートにてshow作成したが不要かもしれない
+  # グラフ関係で使う
+  def show
+    # @task = Task.find(params[:id])
+  end
+  
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path
   end
   
   private

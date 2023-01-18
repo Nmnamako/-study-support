@@ -1,49 +1,85 @@
 <div id="container">
   <div id="black"></div>
   <div id="taskModal">
-    <p>タスク作成</p>
+    <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
-      <%= f.text_field :title %>
-      <%= f.submit "タスク作成" %>
+      <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
+      <%= f.submit "作成", class: "signup" %>
     <%end%>
+    <button id="taskModalClose" >とじる</button>
   </div>
   
   <div id="breakTime"></div>
   
   <% if user_signed_in? %>
-    <button id="taskCreation">タスク作成</button>
-    <span>ゲストログイン用タイマー</span>
+    <div id="taskCreation">タスク作成</div>
   <%end%>
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
-    <% @tasks.each.with_index(1) do |tasks, index| %>
-      <div class="taskList">
-        <div><%= tasks.title %></div>
-        <div class="btnRightBottom">
-          <span class="btnBlue"><%= link_to "編集", edit_task_path(tasks.id) %></span>
-          <span class="btnGreen"></span>
-          <div class="timerStart<%= index %>"><!--<%= link_to "開始", task_path(tasks.id) %>--></div>
+    <div class="entireList">
+      <div style="margin: 10px;">ToDoリスト</div>
+      <% @tasks.each do |tasks| %>
+        <div class="taskList">
+          <div class="taskName">タスク名：</div>
+          <div class="taskTitle"><%= tasks.title %></div>
+          <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
+  
+          <div class="btnRightBottom">
+            <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
+            <%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>
+            <i class="timerStart fa-solid fa-play" style="color: black;"></i>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  <%else%>
+  
+    <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
+    <div class="guestText">ポモドーロタイマーのみご使用できます。</div>
+    
+    <div id="guestTimerModal">
+      <div id="guestTimer">
+        <div id="guestMin"></div>
+        <span style="font-size: 50px;">:</span>
+        <div id="guestSec"></div>
+        <div>
+          <button id="guestStart">開始</button>
+          <button id="guestStop">停止</button>
         </div>
       </div>
-    <%end%>
-  <%else%>
-    <div>アカウントを作成されていないのでToDoリストはご利用できません。</div>
+    </div>
   <%end%>
+  
   
   <!--タイマー用モーダル-->
   <div id="timerModal">
-    <div id="taskTitle"></div>
-    <div>タイマー表示</div>
-    <span>スタート</span>
-    <span>開始</span>
-    <span>停止</span>
-    <button>とじる</button>
+    <div class="activeTask">作業中のタスク</div>
+    <div id="taskTitleShow"></div>
+    
+    <div class="timer">
+      <div id="min"></div>
+      <span style="font-size: 50px;">:</span>
+      <div id="sec"></div>
+    </div>
+    
+    <div id="start"><i class="fa-solid fa-play"></i></div>
+    <span>　</span>
+    <div id="stop"><i class="fa-solid fa-stop"></i></div>
+    <button id="timerModalClose">とじる</button>
   </div>
   
 </div>
 
+
 <!--kaminari導入テスト-->
 <%= paginate @tasks %>
+
+
+<!--後に使うかも-->
+<!--<%= render "tasks/show", show: @task %>-->
+
+
 <!--一番下じゃないとエラーになる-->
+<%= javascript_pack_tag 'task/guestIndex'%>
 <%= javascript_pack_tag 'task/index'%>
