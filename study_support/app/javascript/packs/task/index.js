@@ -109,8 +109,6 @@ function start() {
           //clearInterval(interval);
           reset();
           interval = null;
-          //alertだが、音で知らせてノーストップで時間を進める予定
-          
         } else if (minTime == -1 && changeTime == true) {
           
           //次の休憩のためにfalseに変更

@@ -9,7 +9,7 @@ class UsageTime < ApplicationRecord
   scope :created_three_days_ago, -> { where(created_at: 3.day.ago.all_day) } #3日前
   scope :created_four_days_ago, -> { where(created_at: 4.day.ago.all_day) } #4日前
   scope :created_five_days_ago, -> { where(created_at: 5.day.ago.all_day) } #5日前
-  scope :created_six_days_ago, -> { where(created_at: 6.day.ago.all_day) } #5日前
+  scope :created_six_days_ago, -> { where(created_at: 6.day.ago.all_day) } #6日前
   
   
   

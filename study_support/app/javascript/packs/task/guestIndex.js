@@ -10,6 +10,14 @@ let guestInterval;
 //falseかtrueかで、作業時間と休憩時間を変更する
 let guestChangeTime = false;
 
+//audio関係
+const playAudio = document.getElementById("playAudio")
+
+function audio() {
+  if (guestMinTime == 0 && guestSecTime == 3) {
+    playAudio.play();
+  };
+}
 
 function progressGuestMin() {
   document.getElementById("guestMin").textContent = guestMinTime;
@@ -34,6 +42,7 @@ function guestStart() {
         guestMinTime--;
         progressGuestMin()
         progressGuestSin();
+        audio();
         if (guestMinTime == -1 && guestChangeTime == false ){
           
           //次の作業のためにtrueに変更
