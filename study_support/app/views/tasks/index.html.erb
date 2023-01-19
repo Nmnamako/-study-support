@@ -1,19 +1,5 @@
 <!-- 再生プレイヤー -->
-<%= audio_tag 'jihou.mp3' %>
-<input type="submit" id="operation">
-<script>
-  const operation = document.getElementById("operation");
-  const audioPlayer = audiojs.createAll();
-
-  const audio = audioPlayer[0];
-
-  operation.addEventListener("click", () => {
-    audio.play();
-  });
-</script>
-
-
-</script>
+<%= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
 
 <div id="container">
   <div id="black"></div>
@@ -58,7 +44,10 @@
   
           <div class="btnRightBottom">
             <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
-            <%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>
+            
+            
+            <!--<%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>-->
+            
             <i class="timerStart fa-solid fa-play" style="color: black;"></i>
           </div>
         </div>
@@ -112,18 +101,12 @@
 
 
 
-<!--kaminari導入テスト-->
+<!--kaminari導入-->
 <% if @tasks.nil? %>
   
 <%else%>
   <%= paginate @tasks %>
 <%end%>
-
-
-<!--後に使うかも-->
-<!--<%= render "tasks/show", show: @task %>-->
-
-
 
 <!--一番下じゃないとエラーになる-->
 <%= javascript_pack_tag 'task/guestIndex'%>

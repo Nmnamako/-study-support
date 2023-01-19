@@ -3,4 +3,5 @@
 
 
 // mp3再生のため導入
-//= link jihou.mp3
+//= link_tree ../audios
+//= link jihou1.mp3

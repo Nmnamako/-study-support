@@ -4,7 +4,6 @@ const timerModal = document.getElementById("timerModal");
 let taskTitleShow = document.getElementById("taskTitleShow")
 
 
-
 //.innerHTMLをつけることで[object HTMLSpanElement]の出力を回避する
 //コードが長くなるので、taskTitle1などで省略するため宣言をした
 //let taskTitle1 = document.getElementById("taskTitle1").innerHTML;
@@ -29,7 +28,7 @@ const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 
 //カウントダウンタイマー関係
 //時間格納用
-let minTime = 25;
+let minTime = 3;
 let secTime = "00";
 
 //記録時間
@@ -50,6 +49,17 @@ let changeTime = false;
 //    document.getElementsByClassName("taskTitle")
 //  };
 //};
+
+//audio関係
+const playAudio = document.getElementById("playAudio")
+
+function audio() {
+  if (minTime == 0 && secTime == 3) {
+    playAudio.play();
+  };
+}
+
+
 
 
 //minとsecにタイマー表示
@@ -86,26 +96,28 @@ function start() {
       progressSec();
       progressMinRecord();
       if (secTime == -1) {
-        secTime = 59;
+        secTime = 3;
         minTime--;
         progressSec();
         progressMin();
+        audio();
         if (minTime == -1 && changeTime == false ) {
           //次の作業のためにtrueに変更
           changeTime = true;
-          clearInterval(interval);
+          
+          //作業時間と休憩時間の変更時にタイマーを停止する,現状は不要
+          //clearInterval(interval);
           reset();
           interval = null;
-          //alertだが、音で知らせてノーストップで時間を進める予定
-          alert("休憩時間です");
         } else if (minTime == -1 && changeTime == true) {
           
           //次の休憩のためにfalseに変更
           changeTime = false;
-          clearInterval(interval);
+          
+          //作業時間と休憩時間の変更時にタイマーを停止する,現状は不要
+          //clearInterval(interval);
           reset();
           interval = null;
-          alert("開始時間です");
         };
       };
     },1000);
@@ -127,7 +139,7 @@ function reset() {
     progressMin();
   } else {
     //作業時間
-    minTime = 25;
+    minTime = 3;
     secTime = "00";
     progressSec();
     progressMin();
@@ -172,24 +184,24 @@ document.getElementById("timerModalClose").addEventListener('click', function() 
 
 
 
-document.querySelector(".timerStart4").addEventListener('click', function() {
-  taskModal.classList.add("active");
-  black.classList.add("active");
-});
-
-document.querySelector(".timerStart5").addEventListener('click', function() {
-  taskModal.classList.add("active");
-  black.classList.add("active");
-});
-//タイマー開始押下後、タイマーモーダル展開
-//document.getElementById("timerStart").addEventListener('click', function() {
-
-document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
-  timerModal.classList.add("active");
-  black.classList.add("active");
-  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
-  start();
-});
+//document.querySelector(".timerStart4").addEventListener('click', function() {
+//  taskModal.classList.add("active");
+//  black.classList.add("active");
+//});
+//
+//document.querySelector(".timerStart5").addEventListener('click', function() {
+//  taskModal.classList.add("active");
+//  black.classList.add("active");
+//});
+////タイマー開始押下後、タイマーモーダル展開
+////document.getElementById("timerStart").addEventListener('click', function() {
+//
+//document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
+//  timerModal.classList.add("active");
+//  black.classList.add("active");
+//  taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
+//  start();
+//});
 
 
 //これより下には何も記述しないこと
@@ -204,7 +216,7 @@ if (timerStartCheck1.classList.contains("timerStart")) {
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
     start();
     minRecordReset();
-    idAcquisition1.value = document.getElementsByClassName("taskId")[0].innerHTML
+    idAcquisition1.value = document.getElementsByClassName("taskId")[0].innerHTML;
   });
 };
 
