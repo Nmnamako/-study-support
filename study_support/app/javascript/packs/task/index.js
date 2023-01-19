@@ -28,7 +28,7 @@ const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 
 //カウントダウンタイマー関係
 //時間格納用
-let minTime = 3;
+let minTime = 25;
 let secTime = "00";
 
 //記録時間
@@ -96,7 +96,7 @@ function start() {
       progressSec();
       progressMinRecord();
       if (secTime == -1) {
-        secTime = 3;
+        secTime = 59;
         minTime--;
         progressSec();
         progressMin();
@@ -139,7 +139,7 @@ function reset() {
     progressMin();
   } else {
     //作業時間
-    minTime = 3;
+    minTime = 25;
     secTime = "00";
     progressSec();
     progressMin();
