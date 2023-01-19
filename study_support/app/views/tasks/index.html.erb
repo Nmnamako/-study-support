@@ -113,7 +113,11 @@
 
 
 <!--kaminari導入テスト-->
-<%= paginate @tasks %>
+<% if @tasks.nil? %>
+  
+<%else%>
+  <%= paginate @tasks %>
+<%end%>
 
 
 <!--後に使うかも-->
