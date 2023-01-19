@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit]
   
   def index
     @user = current_user
@@ -41,6 +42,15 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :body)
+  end
+  
+  
+  # ログインユーザー以外はじく
+  def is_matching_login_user
+    @task = Task.find(params[:id])
+    unless @task.user == current_user
+      redirect_to  tasks_path
+    end
   end
   
 end
