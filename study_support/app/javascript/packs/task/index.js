@@ -4,6 +4,7 @@ const timerModal = document.getElementById("timerModal");
 let taskTitleShow = document.getElementById("taskTitleShow")
 
 
+
 //.innerHTMLをつけることで[object HTMLSpanElement]の出力を回避する
 //コードが長くなるので、taskTitle1などで省略するため宣言をした
 //let taskTitle1 = document.getElementById("taskTitle1").innerHTML;
