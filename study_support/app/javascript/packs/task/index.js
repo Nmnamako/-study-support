@@ -2,7 +2,7 @@ const taskModal = document.getElementById("taskModal");
 const black = document.getElementById("black");
 const timerModal = document.getElementById("timerModal");
 let taskTitleShow = document.getElementById("taskTitleShow")
-
+let taskBodyShow = document.getElementById("taskBodyShow")
 
 //.innerHTMLをつけることで[object HTMLSpanElement]の出力を回避する
 //コードが長くなるので、taskTitle1などで省略するため宣言をした
@@ -214,6 +214,7 @@ if (timerStartCheck1.classList.contains("timerStart")) {
     timerModal.classList.add("active");
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
+    taskBodyShow.innerHTML = document.getElementsByClassName("taskBody")[0].innerHTML;
     start();
     minRecordReset();
     idAcquisition1.value = document.getElementsByClassName("taskId")[0].innerHTML;
@@ -226,6 +227,7 @@ if (timerStartCheck2.classList.contains("timerStart")) {
     timerModal.classList.add("active");
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
+    taskBodyShow.innerHTML = document.getElementsByClassName("taskBody")[1].innerHTML;
     start();
     minRecordReset();
     idAcquisition1.value = document.getElementsByClassName("taskId")[1].innerHTML
@@ -238,6 +240,7 @@ if (timerStartCheck3.classList.contains("timerStart")) {
     timerModal.classList.add("active");
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
+    taskBodyShow.innerHTML = document.getElementsByClassName("taskBody")[2].innerHTML;
     start();
     minRecordReset();
     idAcquisition1.value = document.getElementsByClassName("taskId")[2].innerHTML
@@ -250,6 +253,7 @@ if (timerStartCheck4.classList.contains("timerStart")) {
     timerModal.classList.add("active");
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
+    taskBodyShow.innerHTML = document.getElementsByClassName("taskBody")[3].innerHTML;
     start();
     minRecordReset();
     idAcquisition1.value = document.getElementsByClassName("taskId")[3].innerHTML
@@ -262,6 +266,7 @@ if (timerStartCheck5.classList.contains("timerStart")) {
     timerModal.classList.add("active");
     black.classList.add("active");
     taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
+    taskBodyShow.innerHTML = document.getElementsByClassName("taskBody")[4].innerHTML;
     start();
     minRecordReset();
     idAcquisition1.value = document.getElementsByClassName("taskId")[4].innerHTML

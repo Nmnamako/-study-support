@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @task = Task.new
     #ログインユーザーのタスクを表示させる
     if user_signed_in?
-      @tasks = @user.tasks.page(params[:page])
+      @tasks = @user.tasks.page(params[:page]).order('updated_at DESC')
     end
     @usage_time = UsageTime.new
   end
