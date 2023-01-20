@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   def index
     @user = current_user
     @task = Task.new
+    
+    
     #ログインユーザーのタスクを表示させる
     if user_signed_in?
       @tasks = @user.tasks.page(params[:page]).order('updated_at DESC')
