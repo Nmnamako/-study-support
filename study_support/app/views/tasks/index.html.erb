@@ -22,6 +22,12 @@
     <div id="taskCreation">タスク作成</div>
   <%end%>
   <p id="notice"><%= notice %></p>
+  <% if user_signed_in? && @user.name == "guestuser" %>
+    <div style="text-align: center; margin-bottom: 10px;">ゲスト用の共有アカウントでログインしているので<br>
+      タスク作成時に個人情報などの入力に注意してください。<br>
+      ゲスト用なのでマイページの機能などは使用できません。
+    </div>
+  <%end%>
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
