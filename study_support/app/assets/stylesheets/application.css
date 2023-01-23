@@ -47,3 +47,11 @@ li {
   text-decoration: none;
   color: black;
 }
+
+.logo1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 200px;
+}

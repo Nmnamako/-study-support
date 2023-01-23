@@ -9,10 +9,12 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/093f51139d.js" crossorigin="anonymous"></script>
+    <%= favicon_link_tag('logo') %> 
   </head>
 
   <body>
     <header>
+      <img src="/assets/logo.jpeg" alt="" class="logo1">
       <ul>
         <% if user_signed_in? && @user.name == "guestuser" %>
           <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>

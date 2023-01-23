@@ -45,11 +45,11 @@ function audio() {
 
 //minとsecにタイマー表示
 function progressMin(){
-  document.getElementById("min").textContent = minTime.toString().padStart(2, '0');;
+  document.getElementById("min").textContent = minTime.toString().padStart(2, '0');
 };
 
 function progressSec() {
-  document.getElementById("sec").textContent = secTime.toString().padStart(2, '0');;
+  document.getElementById("sec").textContent = secTime.toString().padStart(2, '0');
 };
 
 progressMin();

@@ -20,11 +20,11 @@ function audio() {
 }
 
 function progressGuestMin() {
-  document.getElementById("guestMin").textContent = guestMinTime;
+  document.getElementById("guestMin").textContent = guestMinTime.toString().padStart(2, '0');
 };
 
 function progressGuestSin() {
-  document.getElementById("guestSec").textContent = guestSecTime;
+  document.getElementById("guestSec").textContent = guestSecTime.toString().padStart(2, '0');
 };
 
 
@@ -47,20 +47,14 @@ function guestStart() {
           
           //次の作業のためにtrueに変更
           guestChangeTime = true;
-          clearInterval(guestInterval);
           guestReset();
           guestInterval = null;
-          
-          //alertだが、音で知らせてノーストップで時間を進める予定
-          alert("休憩時間です");
         } else if (guestMinTime == -1 && guestChangeTime == true) {
           
           //次の休憩のためにfalseに変更
           guestChangeTime = false;
-          clearInterval(guestInterval);
           guestReset();
           guestInterval = null;
-          alert("開始時間です");
         };
       };
     },1000);
