@@ -1,0 +1,26 @@
+<div class="entireList">
+  <div style="margin: 10px;">ToDoリスト</div>
+  <% tasks.each do |tasks| %>
+    <div class="taskList">
+      <div class="taskName">
+        タスク名：<br>
+        　　詳細：
+      </div>
+      <div class="taskTitle"><%= tasks.title %></div>
+      <div class="taskBody"><%= tasks.body %></div>
+      
+      <!--時間記録時にID取得に必須-->
+      <div class="taskId"><%= tasks.id %></div>
+      
+      <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
+  
+      <div class="btnRightBottom">
+        <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
+        
+        <!--<%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>-->
+        
+        <i class="timerStart fa-solid fa-play" style="color: black;"></i>
+      </div>
+    </div>
+  <%end%>
+</div>

@@ -1,0 +1,31 @@
+<div id="timerModal">
+  <div class="activeTask">作業中のタスク</div>
+  <div id="taskTitleShow"></div>
+  
+  <div id="taskBodyShow"></div>
+  
+  <div class="timer">
+    <div id="min"></div>
+    <span style="font-size: 50px;">:</span>
+    <div id="sec"></div>
+  </div>
+  
+  <div id="start"><i class="fa-solid fa-play"></i></div>
+  <span>　</span>
+  <div id="stop"><i class="fa-solid fa-stop"></i></div>
+  <div class="confirmation">停止ボタンを押してください</div>
+  <div style="color: red; margin-bottom: 10px;">
+    ※秒単位は全て切り捨てになります<br>
+    ※時間記録の押し忘れに注意してください<br>
+    ※ページをリロードするとタイマーがリセットされます
+  </div>
+  
+  <!--時間記録代入用-->
+  <%= form_with model: usage_time, url: usage_times_path , method: :post do |f| %>
+    <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
+    <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
+    <%= f.submit "時間を記録", class: "timeRecord" %>
+  <%end%>
+  
+  <button id="timerModalClose">とじる</button>
+</div>

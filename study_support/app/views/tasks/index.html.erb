@@ -44,65 +44,17 @@
   
           <div class="btnRightBottom">
             <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
-            
-            <!--<%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>-->
-            
             <i class="timerStart fa-solid fa-play" style="color: black;"></i>
           </div>
         </div>
       <%end%>
     </div>
   <%else%>
-  
     <!--ゲスト用タイマー-->
-    <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
-    <div class="guestText">ポモドーロタイマーのみご使用できます。</div>
-    <div id="guestTimerModal">
-      <div id="guestTimer">
-        <div id="guestMin"></div>
-        <span style="font-size: 50px;">:</span>
-        <div id="guestSec"></div>
-        <div>
-          <button id="guestStart">開始</button>
-          <button id="guestStop">停止</button>
-        </div>
-      </div>
-    </div>
+    <%= render 'guestTimer'%>
   <%end%>
-  
-  
   <!--タイマー用モーダル-->
-  <div id="timerModal">
-    <div class="activeTask">作業中のタスク</div>
-    <div id="taskTitleShow"></div>
-    
-    <div id="taskBodyShow"></div>
-    
-    <div class="timer">
-      <div id="min"></div>
-      <span style="font-size: 50px;">:</span>
-      <div id="sec"></div>
-    </div>
-    
-    <div id="start"><i class="fa-solid fa-play"></i></div>
-    <span>　</span>
-    <div id="stop"><i class="fa-solid fa-stop"></i></div>
-    <div class="confirmation">停止ボタンを押してください</div>
-    <div style="color: red; margin-bottom: 10px;">
-      ※秒単位は全て切り捨てになります<br>
-      ※時間記録の押し忘れに注意してください<br>
-      ※ページをリロードするとタイマーがリセットされます
-    </div>
-    
-    <!--時間記録代入用-->
-    <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
-      <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
-      <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
-      <%= f.submit "時間を記録", class: "timeRecord" %>
-    <%end%>
-
-    <button id="timerModalClose">とじる</button>
-  </div>
+  <%= render 'timer',usage_time: @usage_time %>
 </div>
 
 
