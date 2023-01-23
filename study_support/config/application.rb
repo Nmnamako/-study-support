@@ -19,6 +19,9 @@ module StudySupport
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     
+    # devise日本語化
+    config.i18n.default_locale = :ja
+    
     # 日本時間に変更
     config.time_zone = 'Tokyo'
   end

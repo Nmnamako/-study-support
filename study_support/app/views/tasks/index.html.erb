@@ -7,16 +7,11 @@
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
-      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name", required: true %>
+      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name" %>
       <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
   </div>
-  
-  
-  
-  <!--休憩時の-->
-  <div id="breakTime"></div>
   
   <% if user_signed_in? %>
     <div id="taskCreation">タスク作成</div>
