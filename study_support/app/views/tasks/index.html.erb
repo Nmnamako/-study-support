@@ -88,6 +88,11 @@
     <span>　</span>
     <div id="stop"><i class="fa-solid fa-stop"></i></div>
     <div class="confirmation">停止ボタンを押してください</div>
+    <div style="color: red;">
+      ※秒単位は全て切り捨てになります<br>
+      ※時間記録の押し忘れに注意してください<br>
+      ※ページをリロードするとタイマーがリセットされます
+    </div>
     
     <!--時間記録代入用-->
     <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
