@@ -1,4 +1,7 @@
-
+$(document).ready(function(){
+  if ($('#guest').length){
+    // 要素があればここを実行
+  }
 //カウントダウンタイマー関係
 //時間格納用
 let guestMinTime = 25;
@@ -90,4 +93,6 @@ document.getElementById("guestStart").addEventListener('click', function(){
 
 document.getElementById("guestStop").addEventListener('click', function(){
   guestStop();
+});
+
 });

@@ -1,6 +1,6 @@
-
+$(document).ready(function(){
 // WebWorker作成タイマーをWorkerで計算させるため
-var worker = new Worker("worker.js");
+var worker = new Worker("time.js");
 
 const taskModal = document.getElementById("taskModal");
 const black = document.getElementById("black");
@@ -236,3 +236,5 @@ document.getElementsByClassName("timerStart")[0].addEventListener('click', funct
 //  minRecordReset();
 //  idAcquisition1.value = document.getElementsByClassName("taskId")[4].innerHTML
 //});
+
+});
