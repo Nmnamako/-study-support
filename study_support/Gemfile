@@ -84,3 +84,9 @@ gem "jquery-rails"
 
 # kaminari導入テスト
 gem 'kaminari','~> 1.2.1'
+
+# アラート機能再検討
+gem 'audiojs-rails'
+
+# devise日本語化
+gem 'devise-i18n'

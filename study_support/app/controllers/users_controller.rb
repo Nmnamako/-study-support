@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     end
     
     # コンソールチェック用
-    # pp @day1_total_time
+    pp @day2
     
   end
 end

@@ -37,7 +37,8 @@
   position: relative;
   background-color:	#E6E6FA;
   margin: 0 auto 20px;
-  height: 150px;
+  height: 200px;
+  //height: 150px;
   width: 700px;
   border-radius: 10px;
   text-align: center;
@@ -48,16 +49,22 @@
   top: 10px;
   left: 10px;
 }
+
 .taskTitle {
   position: absolute;
   top: 8px;
   left: 90px;
   font-size: 18px;
 }
+
 .taskBody {
   position: absolute;
   top: 34px;
   left: 90px;
+  overflow-wrap: break-word;
+  width: 60%;
+  
+  text-align: left;
 }
 
 .btnRightBottom {
@@ -171,7 +178,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  height: 480px;
+  height: 70% auto;
   width: 500px;
   border-radius: 10px;
   text-align: center;
@@ -182,20 +189,20 @@
 .activeTask {
   margin-top: 10px;
 }
-
-.pagination {
-  text-align: center;
-}
-
-.pagination-list {
-  text-align: center;
- }
  
 #taskTitleShow {
   margin-top: 10px;
   color: black;
   font-size: 20px;
   font-weight: bold;
+}
+
+#taskBodyShow {
+  width: 80%;
+  overflow-wrap: break-word;
+  margin: 0 auto 10px;
+  text-align: center;
+  
 }
 
 .timer {
@@ -243,11 +250,11 @@
 
 .timeRecord {
   display: inline-block;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   background: none;
   text-align: center;
   border: 2px solid #00FA9A;
-  padding: 14px 20px;
+  padding: 14px 26px;
   border-radius: 24px;
   transition: 0.3s;
   cursor: pointer;
@@ -307,18 +314,6 @@
   pointer-events: auto;
   z-index: 10;
 }
-
-
-
-//タスク編集モーダル
-//#taskEdit {
-//  position: fixed;
-//  top: 50%;
-//  left: 50%;
-//  transform: translate(-50%, -50%);
-//  padding: 50px;
-//  background-color: red;
-//}
 
 
 
@@ -404,4 +399,19 @@ textarea {
   min-width: 100px;
   width:200px;
   height:100px
+}
+
+//kaminari関係
+.pagination {
+  text-align: center;
+}
+
+.pagination-list {
+  text-align: center;
+ }
+
+
+// audio関係
+#playAudio {
+  display: none;
 }

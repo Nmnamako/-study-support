@@ -1,4 +1,8 @@
 
+.alert {
+  text-align: center;
+  margin-top: 100px;
+}
 
 .box {
   width: 300px;

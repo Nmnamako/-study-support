@@ -1,25 +1,28 @@
+<!-- 再生プレイヤー -->
+<%= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
+
 <div id="container">
   <div id="black"></div>
   <div id="taskModal">
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
-      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name", required: true %>
+      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name" %>
       <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
   </div>
   
-  
-  
-  
-  <!--休憩時の-->
-  <div id="breakTime"></div>
-  
   <% if user_signed_in? %>
     <div id="taskCreation">タスク作成</div>
   <%end%>
   <p id="notice"><%= notice %></p>
+  <% if user_signed_in? && @user.name == "guestuser" %>
+    <div style="text-align: center; margin-bottom: 10px;">ゲスト用の共有アカウントでログインしているので<br>
+      タスク作成時に個人情報などの入力に注意してください。<br>
+      ゲスト用なのでマイページの機能などは使用できません。
+    </div>
+  <%end%>
   
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
@@ -41,7 +44,9 @@
   
           <div class="btnRightBottom">
             <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
-            <%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>
+            
+            <!--<%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>-->
+            
             <i class="timerStart fa-solid fa-play" style="color: black;"></i>
           </div>
         </div>
@@ -71,6 +76,8 @@
     <div class="activeTask">作業中のタスク</div>
     <div id="taskTitleShow"></div>
     
+    <div id="taskBodyShow"></div>
+    
     <div class="timer">
       <div id="min"></div>
       <span style="font-size: 50px;">:</span>
@@ -81,28 +88,31 @@
     <span>　</span>
     <div id="stop"><i class="fa-solid fa-stop"></i></div>
     <div class="confirmation">停止ボタンを押してください</div>
+    <div style="color: red; margin-bottom: 10px;">
+      ※秒単位は全て切り捨てになります<br>
+      ※作業が終了しましたら時間記録ボタンを押下してください<br>
+      ※ページをリロードするとタイマーがリセットされます
+    </div>
     
     <!--時間記録代入用-->
     <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
       <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
       <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
-      <%= f.submit "時間を記録", class: "timeRecord" %>
+      <%= f.submit "時間記録", class: "timeRecord" %>
     <%end%>
 
-    <button id="timerModalClose">とじる</button>
+    
   </div>
 </div>
 
 
 
-<!--kaminari導入テスト-->
-<%= paginate @tasks %>
-
-
-<!--後に使うかも-->
-<!--<%= render "tasks/show", show: @task %>-->
-
-
+<!--kaminari導入-->
+<% if @tasks.nil? %>
+  
+<%else%>
+  <%= paginate @tasks %>
+<%end%>
 
 <!--一番下じゃないとエラーになる-->
 <%= javascript_pack_tag 'task/guestIndex'%>

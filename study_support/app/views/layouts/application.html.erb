@@ -5,27 +5,37 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <!--メンターさんが入れたJquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/093f51139d.js" crossorigin="anonymous"></script>
+    <%= favicon_link_tag('logo') %> 
   </head>
 
   <body>
-      <header>
-        <ul>
-          <% if user_signed_in? %>
-            <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
-            <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
-            <li data-turbolinks="false"><%= link_to users_my_page_path, class: "headerTextColor" do %>マイページ<%end%></li>
-            <li><%= link_to destroy_user_session_path, method: :delete, class: "headerTextColor" do %>ログアウト<%end%></li>
-          <%else%>
-            <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
-            <li><%= link_to user_session_path, class: "headerTextColor" do %>ログイン<%end%></li>
-            <li><%= link_to new_user_registration_path, class: "headerTextColor" do %>アカウント作成<%end%></li>
-          <%end%>
-        </ul>
-      </header>
-      <%= yield %>
+    <header>
+      <img src="/assets/logo.jpeg" alt="" class="logo1">
+      <ul>
+        <% if user_signed_in? && @user.name == "guestuser" %>
+          <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
+          <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
+          <li><%= link_to destroy_user_session_path, method: :delete, class: "headerTextColor" do %>ログアウト<%end%></li>
+        <%elsif user_signed_in? %>
+          <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
+          <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
+          <li data-turbolinks="false"><%= link_to users_my_page_path, class: "headerTextColor" do %>マイページ<%end%></li>
+          <li><%= link_to destroy_user_session_path, method: :delete, class: "headerTextColor" do %>ログアウト<%end%></li>
+        <%else%>
+          <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
+          <li><%= link_to user_session_path, class: "headerTextColor" do %>ログイン<%end%></li>
+          <li><%= link_to new_user_registration_path, class: "headerTextColor" do %>アカウント作成<%end%></li>
+        <%end%>
+        
+      </ul>
+    </header>
+    <%= yield %>
   </body>
 </html>

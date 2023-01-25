@@ -11,7 +11,15 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+// window.App = {}
+// // App.worker = new Worker("/app/javascript/packs/worker.js")
+// App.worker = new Worker('./worker.js')
 
+// mp3再生のため導入
+//= require audiojs
+
+// import 'packs/task/guestIndex'
+// import 'packs/task/index'
 
 
 // 非同期通信のため導入
