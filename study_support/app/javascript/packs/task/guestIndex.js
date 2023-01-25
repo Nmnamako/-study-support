@@ -2,14 +2,14 @@
 //  if ($('#guest').length){
 //    // 要素があればここを実行
 //  }
-
-let worker = new Worker("time.js");
   
 if (document.getElementById('guestTimerModal')) {
+  let worker = new Worker("time.js");
   //カウントダウンタイマー関係
   //時間格納用
   let guestMinTime = 25;
   let guestSecTime = "00";
+  let sec = "00";
   
   //タイマー停止用
   let guestInterval;
@@ -40,32 +40,52 @@ if (document.getElementById('guestTimerModal')) {
   
   
   function guestStart() {
-    if (guestInterval == null) {
-      guestInterval = setInterval(function(){
-        guestSecTime--;
-        progressGuestSin();
-        if (guestSecTime == -1){
-          guestSecTime = 59;
-          guestMinTime--;
-          progressGuestMin()
-          progressGuestSin();
-          audio();
-          if (guestMinTime == -1 && guestChangeTime == false ){
-            
-            //次の作業のためにtrueに変更
-            guestChangeTime = true;
-            guestReset();
-            guestInterval = null;
-          } else if (guestMinTime == -1 && guestChangeTime == true) {
-            
-            //次の休憩のためにfalseに変更
-            guestChangeTime = false;
-            guestReset();
-            guestInterval = null;
-          };
-        };
-      },1000);
-    };
+    worker.onmessage = function (secTime) {
+      sec = `${secTime.data}`;
+      guestSecTime = sec;
+      audio();
+      document.getElementById("guestSec").textContent = guestSecTime.toString().padStart(2, '0');
+      if (sec == -1 ) {
+        guestMinTime--;
+        progressGuestMin();
+        if (guestMinTime == -1 && guestChangeTime == false ) {
+          guestChangeTime = true;
+          guestReset();
+          guestInterval = null;
+        } else if (guestMinTime == -1 && guestChangeTime == true) {
+          //次の休憩のためにfalseに変更
+          guestChangeTime = false;
+          guestReset();
+          guestInterval = null;
+        }
+      }
+    }
+  //  if (guestInterval == null) {
+  //    guestInterval = setInterval(function(){
+  //      guestSecTime--;
+  //      progressGuestSin();
+  //      if (guestSecTime == -1){
+  //        guestSecTime = 59;
+  //        guestMinTime--;
+  //        progressGuestMin()
+  //        progressGuestSin();
+  //        audio();
+  //        if (guestMinTime == -1 && guestChangeTime == false ){
+  //          
+  //          //次の作業のためにtrueに変更
+  //          guestChangeTime = true;
+  //          guestReset();
+  //          guestInterval = null;
+  //        } else if (guestMinTime == -1 && guestChangeTime == true) {
+  //          
+  //          //次の休憩のためにfalseに変更
+  //          guestChangeTime = false;
+  //          guestReset();
+  //          guestInterval = null;
+  //        };
+  //      };
+  //    },1000);
+  //  };
   };
   
   
@@ -78,13 +98,13 @@ if (document.getElementById('guestTimerModal')) {
   function guestReset() {
     if (guestChangeTime == true) {
       //休憩時間
-      guestMinTime = 5;
+      guestMinTime = 4;
       guestSecTime = "00";
       progressGuestMin();
       progressGuestSin();
     } else {
       //作業時間
-      guestMinTime = 25;
+      guestMinTime = 24;
       guestSecTime = "00";
       progressGuestMin();
       progressGuestSin();
@@ -93,10 +113,11 @@ if (document.getElementById('guestTimerModal')) {
   
   document.getElementById("guestStart").addEventListener('click', function(){
     guestStart();
+    worker.postMessage('job');
   });
   
   document.getElementById("guestStop").addEventListener('click', function(){
-    guestStop();
+    worker.postMessage('stop');
   });
 } else {
   
