@@ -17,7 +17,8 @@
 
   <body>
     <header>
-      <img src="/assets/logo.jpg" alt="" class="logo1">
+      <!--<img src="/assets/logo.jpg" alt="" class="logo1">-->
+      <%= image_tag asset_path('logo.jpg'), class: "logo1" %>
       <ul>
         <% if user_signed_in? && @user.name == "guestuser" %>
           <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
