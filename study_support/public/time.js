@@ -1,69 +1,72 @@
 
-const taskModal = document.getElementById("taskModal");
+//const taskModal = document.getElementById("taskModal");
 //const black = document.getElementById("black");
 //const timerModal = document.getElementById("timerModal");
 
 
 //カウントダウンタイマー関係
 //時間格納用
-let minTime = 2;
+//let minTime = 2;
 let secTime = "00";
 
 //タイマー停止用
 let interval;
 
 //falseかtrueかで、作業時間と休憩時間を変更する
-let changeTime = false;
+//let changeTime = false;
 
 //記録時間
-let minRecord = 0;
+//let minRecord = 0;
 
 
 //クラスの有無判別のため宣言
-const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
-const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
-const timerStartCheck3 = document.getElementsByClassName("timerStart")[2];
-const timerStartCheck4 = document.getElementsByClassName("timerStart")[3];
-const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
+//const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
+//const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
+//const timerStartCheck3 = document.getElementsByClassName("timerStart")[2];
+//const timerStartCheck4 = document.getElementsByClassName("timerStart")[3];
+//const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 
 
 //audio関係
-const playAudio = document.getElementById("playAudio")
-
-function audio() {
-  if (minTime == 0 && secTime == 3) {
-    playAudio.play();
-  };
-};
+//const playAudio = document.getElementById("playAudio")
+//
+//function audio() {
+//  if (minTime == 0 && secTime == 3) {
+//    playAudio.play();
+//  };
+//};
 
 //minとsecにタイマー表示
-function progressMin(){
-  document.getElementById("min").textContent = minTime.toString().padStart(2, '0');
-};
+//function progressMin(){
+//  document.getElementById("min").textContent = minTime.toString().padStart(2, '0');
+//};
 
-function progressSec() {
-  document.getElementById("sec").textContent = secTime.toString().padStart(2, '0');
-};
+//function progressSec() {
+//  document.getElementById("sec").textContent = secTime.toString().padStart(2, '0');
+//};
 
 //記録用の関数
-function progressMinRecord() {
-  if (secTime == 0 && changeTime == false) {
-    minRecord++;
-    document.getElementById("elapsedTime").value = minRecord;
-  };
-};
-
-//タイマー開始押下時に記録用を0にリセットする
-function minRecordReset() {
-  minRecord = 0;
-  document.getElementById("elapsedTime").value = minRecord;
-};
+//function progressMinRecord() {
+//  if (secTime == 0 && changeTime == false) {
+//    minRecord++;
+//    document.getElementById("elapsedTime").value = minRecord;
+//  };
+//};
+//
+////タイマー開始押下時に記録用を0にリセットする
+//function minRecordReset() {
+//  minRecord = 0;
+//  document.getElementById("elapsedTime").value = minRecord;
+//};
 
 
 
 
 self.onmessage = function(message) {
-  if (interval == null) {
+  if (`${message.data}` == 'reset')
+  reset();
+  if (`${message.data}` == 'job') {
+   if (interval == null) {
     interval = setInterval(function() {
       secTime--;
       self.postMessage(secTime);
@@ -72,33 +75,36 @@ self.onmessage = function(message) {
       //progressMinRecord();
       if (secTime == -1) {
         secTime = 59;
-        self.postMessage(secTime);
+        self.postMessage(secTime); 
+      };
+    },1000);
+  };
+  } else if (`${message.data}` == 'stop') {
+    stop();
+  };
         
-        minTime--;
+        // minTime--;
         //progressSec();
         //progressMin();
-        audio();
-        if (minTime == -1 && changeTime == false ) {
+        //audio();
+        //if (minTime == -1 && changeTime == false ) {
           //次の作業のためにtrueに変更
           //changeTime = true;
           
           //作業時間と休憩時間の変更時にタイマーを停止する,現状は不要
           //clearInterval(interval);
           //reset();
-          interval = null;
-        } else if (minTime == -1 && changeTime == true) {
+          //interval = null;
+        //} else if (minTime == -1 && changeTime == true) {
           
           //次の休憩のためにfalseに変更
-          changeTime = false;
+          //changeTime = false;
           
           //作業時間と休憩時間の変更時にタイマーを停止する,現状は不要
           //clearInterval(interval);
           //reset();
-          interval = null;
-        };
-      };
-    },1000);
-  };
+          //interval = null;
+        //};
 };
 
 
@@ -110,19 +116,8 @@ function stop() {
 
 //reset()内でchangeTimeの中身次第で作業時間と休憩時間を切り替える
 function reset() {
-  if (changeTime == true) {
-    //休憩時間
-    minTime = 5;
-    secTime = "00";
-    progressSec();
-    progressMin();
-  } else {
-    //作業時間
-    minTime = 2;
-    secTime = "00";
-    progressSec();
-    progressMin();
-  };
+  //休憩時間
+  secTime = "00";
 };
 
 

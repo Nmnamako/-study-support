@@ -19,7 +19,7 @@ ActiveStorage.start()
 //= require audiojs
 
 // import 'packs/task/guestIndex'
-import 'packs/task/index'
+// import 'packs/task/index'
 
 
 // 非同期通信のため導入

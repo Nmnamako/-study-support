@@ -1,5 +1,5 @@
 
-const taskModal = document.getElementById("taskModal");
+//const taskModal = document.getElementById("taskModal");
 //const black = document.getElementById("black");
 //const timerModal = document.getElementById("timerModal");
 
@@ -16,15 +16,15 @@ let interval;
 let changeTime = false;
 
 //記録時間
-let minRecord = 0;
+//let minRecord = 0;
 
 
 //クラスの有無判別のため宣言
-const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
-const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
-const timerStartCheck3 = document.getElementsByClassName("timerStart")[2];
-const timerStartCheck4 = document.getElementsByClassName("timerStart")[3];
-const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
+//const timerStartCheck1 = document.getElementsByClassName("timerStart")[0];
+//const timerStartCheck2 = document.getElementsByClassName("timerStart")[1];
+//const timerStartCheck3 = document.getElementsByClassName("timerStart")[2];
+//const timerStartCheck4 = document.getElementsByClassName("timerStart")[3];
+//const timerStartCheck5 = document.getElementsByClassName("timerStart")[4];
 
 
 //audio関係
@@ -46,18 +46,18 @@ function progressSec() {
 };
 
 //記録用の関数
-function progressMinRecord() {
-  if (secTime == 0 && changeTime == false) {
-    minRecord++;
-    document.getElementById("elapsedTime").value = minRecord;
-  };
-};
-
-//タイマー開始押下時に記録用を0にリセットする
-function minRecordReset() {
-  minRecord = 0;
-  document.getElementById("elapsedTime").value = minRecord;
-};
+//function progressMinRecord() {
+//  if (secTime == 0 && changeTime == false) {
+//    minRecord++;
+//    document.getElementById("elapsedTime").value = minRecord;
+//  };
+//};
+//
+////タイマー開始押下時に記録用を0にリセットする
+//function minRecordReset() {
+//  minRecord = 0;
+//  document.getElementById("elapsedTime").value = minRecord;
+//};
 
 
 
