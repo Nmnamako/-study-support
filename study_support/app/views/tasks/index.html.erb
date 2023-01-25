@@ -2,7 +2,11 @@
 <%= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
 
 <div id="container">
+  
+  <!--モーダル出現時の背景-->
   <div id="black"></div>
+  
+  <!--タスク作成時のモーダル-->
   <div id="taskModal">
     <p style="margin: 10px;">タスク作成</p>
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
@@ -13,6 +17,7 @@
     <button id="taskModalClose" >とじる</button>
   </div>
   
+  <!---ユーザーログイン中かで処理変更-->
   <% if user_signed_in? %>
     <div id="taskCreation">タスク作成</div>
   <%end%>
@@ -84,10 +89,15 @@
       <div id="sec"></div>
     </div>
     
+    <!--タイマー再開ボタン-->
     <div id="start"><i class="fa-solid fa-play"></i></div>
     <span>　</span>
+    <!--タイマー停止ボタン-->
     <div id="stop"><i class="fa-solid fa-stop"></i></div>
-    <div class="confirmation">停止ボタンを押してください</div>
+    
+    <!--以下の機能を使うか検討中...-->
+    <!--<div class="confirmation">停止ボタンを押してください</div>-->
+    
     <div style="color: red; margin-bottom: 10px;">
       ※秒単位は全て切り捨てになります<br>
       ※作業が終了しましたら時間記録ボタンを押下してください<br>
@@ -101,7 +111,6 @@
       <%= f.submit "時間記録", class: "timeRecord" %>
     <%end%>
 
-    
   </div>
 </div>
 
@@ -114,6 +123,6 @@
   <%= paginate @tasks %>
 <%end%>
 
-<!--一番下じゃないとエラーになる-->
+
 <%= javascript_pack_tag 'task/guestIndex'%>
 <%= javascript_pack_tag 'task/index'%>

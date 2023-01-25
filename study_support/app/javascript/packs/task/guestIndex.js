@@ -57,35 +57,9 @@ if (document.getElementById('guestTimerModal')) {
           guestChangeTime = false;
           guestReset();
           guestInterval = null;
-        }
-      }
-    }
-  //  if (guestInterval == null) {
-  //    guestInterval = setInterval(function(){
-  //      guestSecTime--;
-  //      progressGuestSin();
-  //      if (guestSecTime == -1){
-  //        guestSecTime = 59;
-  //        guestMinTime--;
-  //        progressGuestMin()
-  //        progressGuestSin();
-  //        audio();
-  //        if (guestMinTime == -1 && guestChangeTime == false ){
-  //          
-  //          //次の作業のためにtrueに変更
-  //          guestChangeTime = true;
-  //          guestReset();
-  //          guestInterval = null;
-  //        } else if (guestMinTime == -1 && guestChangeTime == true) {
-  //          
-  //          //次の休憩のためにfalseに変更
-  //          guestChangeTime = false;
-  //          guestReset();
-  //          guestInterval = null;
-  //        };
-  //      };
-  //    },1000);
-  //  };
+        };
+      };
+    };
   };
   
   
