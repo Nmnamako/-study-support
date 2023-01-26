@@ -2,7 +2,7 @@
 if (document.getElementById('taskCreation')) {
   //$(document).ready(function(){
   // WebWorker作成タイマーをWorkerで計算させるため
-  let worker = new Worker("time.js");
+  let worker = new Worker("/time.js");
   
   const taskModal = document.getElementById("taskModal");
   const black = document.getElementById("black");

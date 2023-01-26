@@ -4,7 +4,7 @@
 //  }
   
 if (document.getElementById('guestTimerModal')) {
-  let worker = new Worker("time.js");
+  let worker = new Worker("/time.js");
   //カウントダウンタイマー関係
   //時間格納用
   let guestMinTime = 25;
