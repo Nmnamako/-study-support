@@ -9,7 +9,6 @@ if (document.getElementById('guestTimerModal')) {
   //時間格納用
   let guestMinTime = 25;
   let guestSecTime = "00";
-  let sec = "00";
   
   //タイマー停止用
   let guestInterval;
@@ -30,35 +29,38 @@ if (document.getElementById('guestTimerModal')) {
     document.getElementById("guestMin").textContent = guestMinTime.toString().padStart(2, '0');
   };
   
-  function progressGuestSin() {
+  function progressGuestSec() {
     document.getElementById("guestSec").textContent = guestSecTime.toString().padStart(2, '0');
   };
   
   
   progressGuestMin();
-  progressGuestSin();
+  progressGuestSec();
   
   
   function guestStart() {
-    worker.onmessage = function (secTime) {
-      sec = `${secTime.data}`;
-      guestSecTime = sec;
-      audio();
-      document.getElementById("guestSec").textContent = guestSecTime.toString().padStart(2, '0');
-      if (sec == -1 ) {
-        guestMinTime--;
-        progressGuestMin();
-        if (guestMinTime == -1 && guestChangeTime == false ) {
-          guestChangeTime = true;
-          guestReset();
-          guestInterval = null;
-        } else if (guestMinTime == -1 && guestChangeTime == true) {
-          //次の休憩のためにfalseに変更
-          guestChangeTime = false;
-          guestReset();
-          guestInterval = null;
+    if (guestInterval == null) {
+      guestInterval = setInterval(function() {
+        guestSecTime--;
+        audio();
+        progressGuestSec();
+        if (guestSecTime == -1 ) {
+          guestSecTime = 59;
+          guestMinTime--;
+          progressGuestSec();
+          progressGuestMin();
+          if (guestMinTime == -1 && guestChangeTime == false ) {
+            guestChangeTime = true;
+            guestReset();
+            guestInterval = null;
+          } else if (guestMinTime == -1 && guestChangeTime == true) {
+            //次の休憩のためにfalseに変更
+            guestChangeTime = false;
+            guestReset();
+            guestInterval = null;
+          };
         };
-      };
+      },1000);
     };
   };
   
@@ -72,26 +74,27 @@ if (document.getElementById('guestTimerModal')) {
   function guestReset() {
     if (guestChangeTime == true) {
       //休憩時間
-      guestMinTime = 4;
+      guestMinTime = 5;
       guestSecTime = "00";
       progressGuestMin();
-      progressGuestSin();
+      progressGuestSec();
     } else {
       //作業時間
-      guestMinTime = 24;
+      guestMinTime = 25;
       guestSecTime = "00";
       progressGuestMin();
-      progressGuestSin();
+      progressGuestSec();
     };
   };
   
   document.getElementById("guestStart").addEventListener('click', function(){
     guestStart();
-    worker.postMessage('job');
+    //worker.postMessage('job');
   });
   
   document.getElementById("guestStop").addEventListener('click', function(){
-    worker.postMessage('stop');
+    guestStop();
+    //worker.postMessage('stop');
   });
 } else {
   

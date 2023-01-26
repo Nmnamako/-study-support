@@ -23,9 +23,9 @@
   <%end%>
   <p id="notice"><%= notice %></p>
   <% if user_signed_in? && @user.name == "guestuser" %>
-    <div style="text-align: center; margin-bottom: 10px;">ゲスト用の共有アカウントでログインしているので<br>
-      タスク作成時に個人情報などの入力に注意してください。<br>
-      ゲスト用なのでマイページの機能などは使用できません。
+    <div style="text-align: center; margin-bottom: 10px;">
+      現在ゲスト用の<span style="color: red;">共有アカウント</span>でログインしています。<br>
+      タスク作成時に個人情報などの入力にご注意ください。<br>
     </div>
   <%end%>
   
@@ -60,7 +60,7 @@
   <%else%>
   
     <!--ゲスト用タイマー-->
-    <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
+    <div class="guestText">ログインされていないのでToDoリストはご利用できません。</div>
     <div class="guestText">ポモドーロタイマーのみご使用できます。</div>
     <div id="guestTimerModal">
       <div id="guestTimer">
@@ -98,7 +98,7 @@
     <!--以下の機能を使うか検討中...-->
     <!--<div class="confirmation">停止ボタンを押してください</div>-->
     
-    <div style="color: red; margin-bottom: 10px;">
+    <div style="color: red; margin: 20px 0;">
       ※秒単位は全て切り捨てになります<br>
       ※作業が終了しましたら時間記録ボタンを押下してください<br>
       ※ページをリロードするとタイマーがリセットされます

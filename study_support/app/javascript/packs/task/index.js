@@ -1,9 +1,5 @@
 
 if (document.getElementById('taskCreation')) {
-  //$(document).ready(function(){
-  // WebWorker作成タイマーをWorkerで計算させるため
-  let worker = new Worker("/time.js");
-  
   
   
   const taskModal = document.getElementById("taskModal");
@@ -18,7 +14,6 @@ if (document.getElementById('taskCreation')) {
   //時間格納用
   let minTime = 25;
   let secTime = "00";
-  let sec = "00";
   
   
   //記録時間
@@ -38,11 +33,10 @@ if (document.getElementById('taskCreation')) {
   const playAudio = document.getElementById("playAudio")
   
   function audio() {
-    if (minTime == 0 && sec == 3) {
+    if (minTime == 0 && secTime == 3 ) {
       playAudio.play();
     };
   };
-  
   
   
   
@@ -52,7 +46,7 @@ if (document.getElementById('taskCreation')) {
   };
   
   function progressSec() {
-    document.getElementById("sec").textContent = secTime;
+    document.getElementById("sec").textContent = secTime.toString().padStart(2, '0');
   };
   
   progressMin();
@@ -61,7 +55,7 @@ if (document.getElementById('taskCreation')) {
   
   //記録用の関数
   function progressMinRecord() {
-    if (sec == 0 && changeTime == false) {
+    if (secTime == 0 && changeTime == false) {
       minRecord++;
       document.getElementById("elapsedTime").value = minRecord;
     };
@@ -75,43 +69,60 @@ if (document.getElementById('taskCreation')) {
   
   // タイマー関係
   function start() {
-    worker.onmessage = function (secTime) {
-      sec = `${secTime.data}`;
-      //minRecordReset();
-      secTime = sec;
-      progressMinRecord();
-      audio();
-      document.getElementById("sec").textContent = secTime.toString().padStart(2, '0');
-      if (sec == -1 ) {
-        minTime--;
-        progressMin();
-        if (minTime == -1 && changeTime == false ) {
-          //次の作業のためにtrueに変更
-          changeTime = true;
-          reset();
-          interval = null;
-        } else if (minTime == -1 && changeTime == true) {
-          //次の休憩のためにfalseに変更
-          changeTime = false;
-          reset();
-          interval = null;
+    if (interval == null) {
+      interval = setInterval(function() {
+        secTime--;
+        
+        // audio()は必ずprogressSec();より前に記述すること
+        // パディング0の関係で数値として読み込めなくなる
+        audio();
+        progressSec();
+        progressMinRecord();
+        if (secTime == -1) {
+          secTime = 59;
+          minTime--;
+          progressSec();
+          progressMin();
+          if (minTime == -1 && changeTime == false ) {
+            //次の作業のためにtrueに変更
+            changeTime = true;
+            
+            //作業時間と休憩時間の変更時にタイマーを停止する,現状は不要
+            //clearInterval(interval);
+            reset();
+            interval = null;
+          } else if (minTime == -1 && changeTime == true) {
+            
+            //次の休憩のためにfalseに変更
+            changeTime = false;
+            
+            //作業時間と休憩時間の変更時にタイマーを停止する,現状は不要
+            //clearInterval(interval);
+            reset();
+            interval = null;
+          };
         };
-      };
+      },1000);
     };
   };
   
+  
+  function stop() {
+    clearInterval(interval);
+    interval = null;
+  };
   
   //reset()内でchangeTimeの中身次第で作業時間と休憩時間を切り替える
   function reset() {
     if (changeTime == true) {
       //休憩時間
-      minTime = 4;
+      minTime = 5;
       secTime = "00";
       progressSec();
       progressMin();
     } else {
       //作業時間
-      minTime = 24;
+      minTime = 25;
       secTime = "00";
       progressSec();
       progressMin();
@@ -120,11 +131,11 @@ if (document.getElementById('taskCreation')) {
   
   // タイマーの再開や停止など
   document.getElementById("start").addEventListener('click', function(){
-    worker.postMessage('job');
+    start();
   });
   
   document.getElementById("stop").addEventListener('click', function(){
-    worker.postMessage('stop');
+    stop();
   });
   
   
@@ -159,13 +170,10 @@ if (document.getElementById('taskCreation')) {
   //if構文でエラー解消,クラスがなければ処理を実行しないように修正
   if (document.getElementsByClassName('timerStart')[0]) {
     document.getElementsByClassName("timerStart")[0].addEventListener('click', function() {
-      worker.postMessage('job');
-      worker.postMessage('reset');
       timerModal.classList.add("active");
       black.classList.add("active");
       taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[0].innerHTML;
       taskBodyShow.innerHTML = document.getElementsByClassName("taskBody")[0].innerHTML;
-      
       start();
       minRecordReset();
       idAcquisition1.value = document.getElementsByClassName("taskId")[0].innerHTML;
@@ -176,8 +184,6 @@ if (document.getElementById('taskCreation')) {
   
   if (document.getElementsByClassName('timerStart')[1]) {
     document.getElementsByClassName("timerStart")[1].addEventListener('click', function() {
-      worker.postMessage('job');
-      worker.postMessage('reset');
       timerModal.classList.add("active");
       black.classList.add("active");
       taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[1].innerHTML;
@@ -192,8 +198,6 @@ if (document.getElementById('taskCreation')) {
   
   if (document.getElementsByClassName('timerStart')[2]) {
     document.getElementsByClassName("timerStart")[2].addEventListener('click', function() {
-      worker.postMessage('job');
-      worker.postMessage('reset');
       timerModal.classList.add("active");
       black.classList.add("active");
       taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[2].innerHTML;
@@ -208,8 +212,6 @@ if (document.getElementById('taskCreation')) {
   
   if (document.getElementsByClassName('timerStart')[3]) {
     document.getElementsByClassName("timerStart")[3].addEventListener('click', function() {
-      worker.postMessage('job');
-      worker.postMessage('reset');
       timerModal.classList.add("active");
       black.classList.add("active");
       taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[3].innerHTML;
@@ -224,8 +226,6 @@ if (document.getElementById('taskCreation')) {
   
   if (document.getElementsByClassName('timerStart')[4]) {
     document.getElementsByClassName("timerStart")[4].addEventListener('click', function() {
-      worker.postMessage('job');
-      worker.postMessage('reset');
       timerModal.classList.add("active");
       black.classList.add("active");
       taskTitleShow.innerHTML = document.getElementsByClassName("taskTitle")[4].innerHTML;
