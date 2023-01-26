@@ -4,6 +4,8 @@ if (document.getElementById('taskCreation')) {
   // WebWorker作成タイマーをWorkerで計算させるため
   let worker = new Worker("/time.js");
   
+  
+  
   const taskModal = document.getElementById("taskModal");
   const black = document.getElementById("black");
   const timerModal = document.getElementById("timerModal");

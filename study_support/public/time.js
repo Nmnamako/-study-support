@@ -7,7 +7,9 @@ let interval;
 
 // index.jsからメッセージ受け取り稼働
 // タイマー関係
-self.onmessage = function(message) {
+// selfからthisに変更,海外の情報ではself.onmessageではコンパイル時に変数名などを
+// 書き換えてしまうためthisでonmessageをグローバルオブジェクトで宣言する必要がある
+this.onmessage = function(message) {
   if (`${message.data}` == 'reset')
   reset();
   if (`${message.data}` == 'job') {
