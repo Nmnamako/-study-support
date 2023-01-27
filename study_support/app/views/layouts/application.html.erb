@@ -20,11 +20,7 @@
       <!--<img src="/assets/logo.jpg" alt="" class="logo1">-->
       <%= image_tag asset_path('logo.jpg'), class: "logo1" %>
       <ul>
-        <% if user_signed_in? && @user.name == "guestuser" %>
-          <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
-          <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
-          <li><%= link_to destroy_user_session_path, method: :delete, class: "headerTextColor" do %>ログアウト<%end%></li>
-        <%elsif user_signed_in? %>
+        <%if user_signed_in? %>
           <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
           <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
           <li data-turbolinks="false"><%= link_to users_my_page_path, class: "headerTextColor" do %>マイページ<%end%></li>
