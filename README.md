@@ -62,15 +62,19 @@ https://docs.google.com/spreadsheets/d/17vJjpKevmiNklE1ejdWXvagLsC9oFsVUm4BDrPJ8
 アプリケーション詳細設計
 https://docs.google.com/spreadsheets/d/1iMwrILWBEJEnvUs6qHPhpDSLKWHhQnolIyBwSDa3JKE/edit#gid=549108681
 
+WBSシート
+https://docs.google.com/spreadsheets/d/1WT-Pm389VZdsW4y97MkPjENs9siSZfNPosU4PBe3TeA/edit#gid=977420151
+
 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails 6.1.7
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 
 ## 使用素材
-- https://www.youtube.com/watch?v=V2218leGWc4
-- その他使用検討中
+- アラート音 https://www.youtube.com/watch?v=V2218leGWc4
+- ロゴ・ファビコン https://www.canva.com/
+- アイコン https://fontawesome.com/
