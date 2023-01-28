@@ -4,8 +4,15 @@
 
 #notice {
   text-align: center;
+  color: green;
+  margin-top: 10px;
 }
 
+#alert {
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+}
 
 //タスク作成ボタン
 #taskCreation {
@@ -36,10 +43,10 @@
 .taskList {
   position: relative;
   background-color:	#E6E6FA;
-  margin: 0 auto 20px;
+  margin: 0 10px 20px 10px;
   height: 200px;
   //height: 150px;
-  width: 700px;
+  width: auto;
   border-radius: 10px;
   text-align: center;
 }

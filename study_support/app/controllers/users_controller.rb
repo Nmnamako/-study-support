@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     end
     
     # コンソールチェック用
-    pp @day2
+    # pp @day2
     
   end
 end
