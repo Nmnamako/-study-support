@@ -1,5 +1,5 @@
 <!-- 再生プレイヤー -->
-<%= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
+<%#= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
 
 <div id="container">
   
@@ -46,7 +46,7 @@
           <!--時間記録時にID取得に必須-->
           <div class="taskId"><%= tasks.id %></div>
           
-          <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
+          <%= link_to task_path(tasks.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">
             <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
