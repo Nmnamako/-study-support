@@ -1,5 +1,5 @@
 <!-- 再生プレイヤー -->
-<%#= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
+<%= audio_tag "jihou1.mp3", controls: true, id: "playAudio" %>
 
 <div id="container">
   
@@ -36,12 +36,12 @@
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
         <div class="taskList">
-          <div class="taskName">
+          <!--<div class="taskName">
             タスク名：<br>
             　　詳細：
-          </div>
-          <div class="taskTitle"><%= tasks.title %></div>
-          <div class="taskBody"><%= tasks.body %></div>
+          </div>-->
+          <div class="taskTitle">< タスク名 ><br><%= tasks.title %></div>
+          <div class="taskBody">< 詳細 ><br><%= tasks.body %></div>
           
           <!--時間記録時にID取得に必須-->
           <div class="taskId"><%= tasks.id %></div>
