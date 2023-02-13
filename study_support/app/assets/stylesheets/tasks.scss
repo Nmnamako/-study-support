@@ -58,6 +58,14 @@
   left: 10px;
 }
 
+.startDay {
+  padding: 10px 10px;
+}
+
+.endDay {
+  padding: 10px 10px;
+}
+
 .taskTitle {
   //position: absolute;
   //top: 8px;
@@ -157,7 +165,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  height: 380px;
+  min-height: 380px;
+  height: auto;
   width: 400px;
   border-radius: 10px;
   text-align: center;
@@ -173,6 +182,7 @@
   border-radius: 24px;
   transition: 0.3s;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 #taskModalClose:hover {
@@ -375,8 +385,8 @@
   box-shadow: 3px 3px 3px 3px gray;
   margin: 50px auto;
   text-align: center;
-  height: 400px;
-  width: 300px;
+  height: 600px;
+  width: 400px;
 }
 
 

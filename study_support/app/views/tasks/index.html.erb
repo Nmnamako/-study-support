@@ -12,6 +12,14 @@
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
       <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name" %>
+      <div>
+        開始日<br>
+        <%= f.date_field :start_date,class: "name", min: Date.current %>
+      </div>
+      <div>
+        終了日<br>
+        <%= f.date_field :end_date,class: "name", min: Date.current %>
+      </div>
       <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
@@ -36,10 +44,11 @@
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
         <div class="taskList">
-          <!--<div class="taskName">
-            タスク名：<br>
-            　　詳細：
-          </div>-->
+          <% if tasks.start_date.present? %>
+            <div class="startDay"><%= tasks.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
+            <div class="endDay"><%= tasks.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
+          <%else%>
+          <%end%>
           <div class="taskTitle">< タスク名 ><br><%= tasks.title %></div>
           <div class="taskBody">< 詳細 ><br><%= tasks.body %></div>
           
