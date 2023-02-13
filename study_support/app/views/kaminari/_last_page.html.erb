@@ -12,6 +12,6 @@ Link to the "Last" page
 =end
 %>
 
-<li>
+<li style="background-color: red;">
   <%= link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, remote: remote, class: "pagination-link#{' is-current' if current_page.last?}" %>
 </li>

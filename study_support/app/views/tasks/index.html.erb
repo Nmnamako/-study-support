@@ -12,6 +12,14 @@
     <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
       <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
       <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name" %>
+      <div>
+        開始日<br>
+        <%= f.date_field :start_date,class: "name", min: Date.current %>
+      </div>
+      <div>
+        終了日<br>
+        <%= f.date_field :end_date,class: "name", min: Date.current %>
+      </div>
       <%= f.submit "作成", class: "submit" %>
     <%end%>
     <button id="taskModalClose" >とじる</button>
@@ -36,17 +44,18 @@
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
         <div class="taskList">
-          <div class="taskName">
-            タスク名：<br>
-            　　詳細：
-          </div>
-          <div class="taskTitle"><%= tasks.title %></div>
-          <div class="taskBody"><%= tasks.body %></div>
+          <% if tasks.start_date.present? %>
+            <div class="startDay"><%= tasks.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
+            <div class="endDay"><%= tasks.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
+          <%else%>
+          <%end%>
+          <div class="taskTitle">< タスク名 ><br><%= tasks.title %></div>
+          <div class="taskBody">< 詳細 ><br><%= tasks.body %></div>
           
           <!--時間記録時にID取得に必須-->
           <div class="taskId"><%= tasks.id %></div>
           
-          <%= link_to task_path(tasks.id), method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
+          <%= link_to task_path(tasks.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
   
           <div class="btnRightBottom">
             <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
