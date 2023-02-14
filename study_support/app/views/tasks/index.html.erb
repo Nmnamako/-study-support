@@ -43,7 +43,22 @@
     <div class="entireList">
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
+        
         <div class="taskList">
+          <% if tasks.check_by?(current_user) %>
+            <p>
+              <%= link_to task_check_path(tasks), method: :delete do %>
+                <i class="fa-solid fa-check" style="color: #32CD32;" title="タスク完了済み"></i>
+              <%end%>
+            </p>
+          <%else%>
+            <p>
+              <%= link_to task_check_path(tasks), method: :post do %>
+                <i class="fa-solid fa-check" style="color: gray;" title="タスク未完了"></i>
+              <%end%>
+            </p>
+          <%end%>
+          
           <% if tasks.start_date.present? %>
             <div class="startDay"><%= tasks.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
             <div class="endDay"><%= tasks.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
@@ -55,14 +70,14 @@
           <!--時間記録時にID取得に必須-->
           <div class="taskId"><%= tasks.id %></div>
           
-          <%= link_to task_path(tasks.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;"></i><%end%>
+          <%= link_to task_path(tasks.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;" title="タスクを削除する"></i><%end%>
   
           <div class="btnRightBottom">
-            <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;"></i><%end%>
+            <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;" title="タスクを編集する"></i><%end%>
             
             <!--<%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>-->
             
-            <i class="timerStart fa-solid fa-play" style="color: black;"></i>
+            <i class="timerStart fa-solid fa-play" style="color: black;" title="タイマーを開始する"></i>
           </div>
         </div>
       <%end%>

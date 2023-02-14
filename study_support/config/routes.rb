@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
   
   
-  resources :tasks, only: [:new, :index, :edit, :update, :create, :destroy]
+  resources :tasks, only: [:new, :index, :edit, :update, :create, :destroy] do
+    resource :check, only: [:create, :destroy]
+  end
   resources :usage_times, only: [:create]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
