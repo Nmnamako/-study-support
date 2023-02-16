@@ -6,7 +6,7 @@ class User < ApplicationRecord
   
   has_many :tasks, dependent: :destroy
   has_many :usage_times, dependent: :destroy
-  
+  has_many :check, dependent: :destroy
   
   
   
