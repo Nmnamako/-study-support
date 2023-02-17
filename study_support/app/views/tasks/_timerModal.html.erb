@@ -1,0 +1,33 @@
+<div class="activeTask">作業中のタスク</div>
+<div id="taskTitleShow"></div>
+
+<div id="taskBodyShow"></div>
+
+<div class="timer">
+  <div id="min"></div>
+  <span style="font-size: 50px;">:</span>
+  <div id="sec"></div>
+</div>
+
+<!--タイマー再開ボタン-->
+<div id="start"><i class="fa-solid fa-play"></i></div>
+<span>　</span>
+<!--タイマー停止ボタン-->
+<div id="stop"><i class="fa-solid fa-stop"></i></div>
+
+<!--以下の機能を使うか検討中...-->
+<!--<div class="confirmation">停止ボタンを押してください</div>-->
+
+<div style="color: red; margin: 20px 0;">
+  ※タイマー終了時にアラート音が鳴ります。<br>
+  ※秒単位は全て切り捨てになります。<br>
+  ※作業が終了しましたら時間記録ボタンを押下してください。<br>
+  ※ページをリロードするとタイマーがリセットされます。
+</div>
+
+<!--時間記録代入用-->
+<%= form_with model: usage_time, url: usage_times_path , method: :post do |f| %>
+  <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
+  <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
+  <%= f.submit "時間記録", class: "timeRecord" %>
+<%end%>

@@ -7,57 +7,20 @@
   <div id="black"></div>
   
   <!--タスク作成時のモーダル-->
-  <div id="taskModal">
-    <p style="margin: 10px;">タスク作成</p>
-    <%= form_with model: @task, url: tasks_path , method: :post do |f| %>
-      <%= f.text_field :title, placeholder: "タスク名を記入", class: "name", required: true %>
-      <%= f.text_area :body, placeholder: "タスク詳細を記入", class: "name" %>
-      <div>
-        開始日<br>
-        <%= f.date_field :start_date,class: "name", min: Date.current %>
-      </div>
-      <div>
-        終了日<br>
-        <%= f.date_field :end_date,class: "name", min: Date.current %>
-      </div>
-      <%= f.submit "作成", class: "submit" %>
-    <%end%>
-    <button id="taskModalClose" >とじる</button>
-  </div>
+  <%= render 'tasks/taskModal', task: @task %>
   
   <!---ユーザーログイン中かで処理変更-->
-  <% if user_signed_in? %>
-    <div id="taskCreation">タスク作成</div>
-  <%end%>
-  <p id="notice"><%= notice %></p>
-  <p id="alert"><%= alert %></p>
-  <% if user_signed_in? && @user.name == "guestuser" %>
-    <div style="text-align: center; margin-bottom: 10px;">
-      現在ゲスト用の<span style="color: red;">共有アカウント</span>でログインしています。<br>
-      タスク作成時に個人情報などの入力にご注意ください。<br>
-    </div>
-  <%end%>
-  
+  <%= render 'tasks/taskCreation', user: @user %>
+
   <!--ToDoリスト一覧-->
   <% if user_signed_in? %>
     <div class="entireList">
       <div style="margin: 10px;">ToDoリスト</div>
       <% @tasks.each do |tasks| %>
-        
         <div class="taskList">
-          <% if tasks.check_by?(current_user) %>
-            <p>
-              <%= link_to task_check_path(tasks), method: :delete do %>
-                <i class="fa-solid fa-check" style="color: #32CD32;" title="タスク完了済み"></i>
-              <%end%>
-            </p>
-          <%else%>
-            <p>
-              <%= link_to task_check_path(tasks), method: :post do %>
-                <i class="fa-solid fa-check" style="color: gray;" title="タスク未完了"></i>
-              <%end%>
-            </p>
-          <%end%>
+          
+          <!--タスク完了チェック-->
+          <%= render 'tasks/check', tasks: tasks %>
           
           <% if tasks.start_date.present? %>
             <div class="startDay"><%= tasks.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
@@ -66,17 +29,11 @@
           <%end%>
           <div class="taskTitle">< タスク名 ><br><%= tasks.title %></div>
           <div class="taskBody">< 詳細 ><br><%= tasks.body %></div>
-          
           <!--時間記録時にID取得に必須-->
           <div class="taskId"><%= tasks.id %></div>
-          
           <%= link_to task_path(tasks.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;" title="タスクを削除する"></i><%end%>
-  
           <div class="btnRightBottom">
             <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;" title="タスクを編集する"></i><%end%>
-            
-            <!--<%= link_to task_path(tasks.id) do %><i class="showButoon fa-regular fa-calendar-check" style="color: black;"></i><%end%>-->
-            
             <i class="timerStart fa-solid fa-play" style="color: black;" title="タイマーを開始する"></i>
           </div>
         </div>
@@ -85,61 +42,12 @@
   <%else%>
   
     <!--ゲスト用タイマー-->
-    <div class="guestText">アカウントを作成されていないのでToDoリストはご利用できません。</div>
-    <div class="guestText">
-      ポモドーロタイマーのみご使用できます。<br>
-      タイマー終了時にアラート音が鳴ります。<br>
-    </div>
-    <div id="guestTimerModal">
-      <div id="guestTimer">
-        <div id="guestMin"></div>
-        <span style="font-size: 50px;">:</span>
-        <div id="guestSec"></div>
-        <div>
-          <button id="guestStart">開始</button>
-          <button id="guestStop">停止</button>
-        </div>
-      </div>
-    </div>
+    <%= render 'tasks/guestTimer' %>
   <%end%>
-  
   
   <!--タイマー用モーダル-->
   <div id="timerModal">
-    <div class="activeTask">作業中のタスク</div>
-    <div id="taskTitleShow"></div>
-    
-    <div id="taskBodyShow"></div>
-    
-    <div class="timer">
-      <div id="min"></div>
-      <span style="font-size: 50px;">:</span>
-      <div id="sec"></div>
-    </div>
-    
-    <!--タイマー再開ボタン-->
-    <div id="start"><i class="fa-solid fa-play"></i></div>
-    <span>　</span>
-    <!--タイマー停止ボタン-->
-    <div id="stop"><i class="fa-solid fa-stop"></i></div>
-    
-    <!--以下の機能を使うか検討中...-->
-    <!--<div class="confirmation">停止ボタンを押してください</div>-->
-    
-    <div style="color: red; margin: 20px 0;">
-      ※タイマー終了時にアラート音が鳴ります。<br>
-      ※秒単位は全て切り捨てになります。<br>
-      ※作業が終了しましたら時間記録ボタンを押下してください。<br>
-      ※ページをリロードするとタイマーがリセットされます。
-    </div>
-    
-    <!--時間記録代入用-->
-    <%= form_with model: @usage_time, url: usage_times_path , method: :post do |f| %>
-      <%= f.hidden_field :task_id, :value => 0, id: "idAcquisition" %>
-      <%= f.hidden_field :elapsed_time, :value => 0, id: "elapsedTime" %>
-      <%= f.submit "時間記録", class: "timeRecord" %>
-    <%end%>
-
+    <%= render 'tasks/timerModal', usage_time: @usage_time %>
   </div>
 </div>
 
