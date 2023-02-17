@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  has_many :usage_times, dependent: :destroy
+  has_many :usage_times
   has_many :check, dependent: :destroy
   belongs_to :user
   
