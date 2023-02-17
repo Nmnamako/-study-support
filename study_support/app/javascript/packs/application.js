@@ -9,6 +9,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+// 非同期通信JS13章参照
+import 'jquery'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

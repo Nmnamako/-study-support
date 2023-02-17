@@ -20,13 +20,21 @@
         <div class="taskList">
           
           <!--タスク完了チェック-->
-          <%= render 'tasks/check', tasks: tasks %>
+          <div id="check_<%= tasks.id %>">
+            <%= render 'checks/check', tasks: tasks %>
+          </div>
           
           <% if tasks.start_date.present? %>
             <div class="startDay"><%= tasks.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
             <div class="endDay"><%= tasks.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
           <%else%>
           <%end%>
+          
+          
+          <!--掛かった時間-->
+          <%#= tasks.times_total %>
+          
+          
           <div class="taskTitle">< タスク名 ><br><%= tasks.title %></div>
           <div class="taskBody">< 詳細 ><br><%= tasks.body %></div>
           <!--時間記録時にID取得に必須-->
