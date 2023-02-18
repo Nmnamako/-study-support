@@ -3,10 +3,14 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+
+// 非同期通信JS13章参照
+import 'jquery'
 
 Rails.start()
 Turbolinks.start()
@@ -28,4 +32,5 @@ ActiveStorage.start()
 //HTMLはGETとPOSTしか対応していない。後のHTTPはJSファイルが送信している。
 //調べた結果送信時にJSファイルが関与していない可能性がある。現状はこれ以上わからない。
 //原因特定できなければ非同期通信は非採用にする。現状はコメントアウトし現状維持
-//import "jquery";
+// import "jquery";
+// require("@rails/ujs").start();

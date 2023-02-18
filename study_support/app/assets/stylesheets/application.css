@@ -33,6 +33,29 @@ header {
   padding: 20px;
 }
 
+.navi li a{
+  position: relative;
+}
+
+.navi li a::after {
+  content: '';
+  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: darkblue;
+  transition:all .5s;
+  opacity: 0;
+}
+
+.navi li a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+
 ul {
   text-align: right;
 }
@@ -41,6 +64,10 @@ li {
   list-style:none;
   display: inline-block;
   margin-right: 20px;
+}
+
+main {
+  font-family: serif;
 }
 
 .headerTextColor {

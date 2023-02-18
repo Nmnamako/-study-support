@@ -80,7 +80,8 @@ gem "net-imap"
 gem "devise"
 
 # 非同期通信のため導入
-gem "jquery-rails"
+# jQueryはyarnで行うべきだった
+# gem "jquery-rails"
 
 # kaminari導入テスト
 gem 'kaminari','~> 1.2.1'
