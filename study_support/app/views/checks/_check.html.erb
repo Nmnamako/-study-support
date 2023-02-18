@@ -1,12 +1,12 @@
-<% if tasks.check_by?(current_user) %>
+<% if task.check_by?(current_user) %>
   <p>
-    <%= link_to task_check_path(tasks), method: :delete, remote: true do %>
+    <%= link_to task_check_path(task), method: :delete, remote: true do %>
       <i class="fa-solid fa-check" style="color: #32CD32;" title="タスク完了済み"></i>
     <%end%>
   </p>
 <%else%>
   <p>
-    <%= link_to task_check_path(tasks), method: :post, remote: true do %>
+    <%= link_to task_check_path(task), method: :post, remote: true do %>
       <i class="fa-solid fa-check" style="color: gray;" title="タスク未完了"></i>
     <%end%>
   </p>

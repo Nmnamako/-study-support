@@ -19,7 +19,7 @@
     <header>
       <!--<img src="/assets/logo.jpg" alt="" class="logo1">-->
       <%= image_tag asset_path('logo.jpg'), class: "logo1" %>
-      <ul>
+      <ul class="navi">
         <%if user_signed_in? %>
           <li><%= link_to homes_top_path, class: "headerTextColor" do %>Top画面<%end%></li>
           <li><%= link_to tasks_path, class: "headerTextColor" do %>ToDoリスト<%end%></li>
@@ -33,6 +33,8 @@
         
       </ul>
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

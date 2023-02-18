@@ -68,25 +68,46 @@
 }
 
 .startDay {
-  padding: 10px 10px;
+  text-align: center;
+  margin: 5px 0 0 10px;
+  //padding: 10px 10px;
+  background-color: white;
+  width: 30%;
+  border-radius: 30px;
 }
 
 .endDay {
-  padding: 10px 10px;
+  text-align: center;
+  margin: 10px 0 0 10px;
+  //padding: 10px 10px;
+  background-color: white;
+  width: 30%;
+  border-radius: 30px;
+}
+
+.taskElapsedTime {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  padding: 3px;
+  border-radius: 15px;
+  padding: 0 10px;
+  text-align: center;
+  background-color: white;
 }
 
 .taskTitle {
-  //position: absolute;
-  //top: 8px;
-  //left: 90px;
-  font-size: 18px;
-  padding: 10px 10px;
+  margin: 10px 0 0 10px;
+  font-size: 16px;
+  padding: 3px 10px;
+  background-color: white;
+  text-align: center;
+  width: fit-content;
+  border-radius: 15px;
 }
 
 .taskBody {
-  //position: absolute;
-  //top: 34px;
-  //left: 90px;
+  margin-left: 10px;
   white-space: pre-wrap;
   overflow-wrap: break-word;
   width: 60%;

@@ -16,32 +16,42 @@
   <% if user_signed_in? %>
     <div class="entireList">
       <div style="margin: 10px;">ToDoリスト</div>
-      <% @tasks.each do |tasks| %>
+      <% @tasks.each do |task| %>
         <div class="taskList">
           
           <!--タスク完了チェック-->
-          <div id="check_<%= tasks.id %>">
-            <%= render 'checks/check', tasks: tasks %>
+          <div id="check_<%= task.id %>">
+            <%= render 'checks/check', task: task %>
           </div>
           
-          <% if tasks.start_date.present? %>
-            <div class="startDay"><%= tasks.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
-            <div class="endDay"><%= tasks.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
+          <% if task.start_date.present? && task.end_date.present? %>
+            <div class="startDay"><%= task.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
+            <div class="endDay"><%= task.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
+          <%elsif task.start_date.present? %>
+            <div class="startDay"><%= task.start_date.strftime("%Y年%m月%d日") %> 開始日</div>
+          <%elsif task.end_date.present? %>
+            <div class="endDay"><%= task.end_date.strftime("%Y年%m月%d日") %> 終了日</div>
           <%else%>
+            <div class="taskTitle">期日は設定されていません</div>
           <%end%>
           
+          <div class="taskTitle">タスク名</div>
+          <div class="taskBody"><%= task.title %></div>
+          <% if task.body.present? %>
+            <div class="taskTitle">詳細</div>
+            <div class="taskBody"><%= task.body %></div>
+          <%else%>
+            <div class="taskTitle">詳細</div>
+            <div class="taskBody">記載がありません</div>
+          <%end%>
+          <!--時間記録時にID取得に必須-->
+          <div class="taskId"><%= task.id %></div>
+          <%= link_to task_path(task.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;" title="タスクを削除する"></i><%end%>
           
           <!--掛かった時間-->
-          <%#= tasks.times_total %>
-          
-          
-          <div class="taskTitle">< タスク名 ><br><%= tasks.title %></div>
-          <div class="taskBody">< 詳細 ><br><%= tasks.body %></div>
-          <!--時間記録時にID取得に必須-->
-          <div class="taskId"><%= tasks.id %></div>
-          <%= link_to task_path(tasks.id), data: {confirm: "削除しますか？"}, method: :delete do %><i class="deleteButton fa-solid fa-trash-arrow-up" style="color: black;" title="タスクを削除する"></i><%end%>
+          <span class="taskElapsedTime">タスク経過時刻 <%= task.times_total %>分</span>
           <div class="btnRightBottom">
-            <%= link_to edit_task_path(tasks.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;" title="タスクを編集する"></i><%end%>
+            <%= link_to edit_task_path(task.id) do %><i class="editButton fa-regular fa-pen-to-square" style="color: black;" title="タスクを編集する"></i><%end%>
             <i class="timerStart fa-solid fa-play" style="color: black;" title="タイマーを開始する"></i>
           </div>
         </div>
