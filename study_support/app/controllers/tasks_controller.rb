@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit]
+  before_action :is_matching_login_user, only: [:edit, :destroy]
   
   def index
     @user = current_user
@@ -29,10 +29,6 @@ class TasksController < ApplicationController
     @task.update(task_params)
     redirect_to tasks_path, notice: "タスク編集が完了しました。"
   end
-  
-  # 部分テンプレートにてshow作成したが不要かもしれない
-  # グラフ関係で使う
-  
   
   def destroy
     @task = Task.find(params[:id])

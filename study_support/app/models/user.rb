@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :usage_times, dependent: :destroy
   has_many :check, dependent: :destroy
   
+  def dataCall
   
-  
-  
+  end
   
   # ゲストユーザー用
   def self.guest
