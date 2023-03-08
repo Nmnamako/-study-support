@@ -8,9 +8,29 @@ class User < ApplicationRecord
   has_many :usage_times, dependent: :destroy
   has_many :check, dependent: :destroy
   
-  def dataCall
+  # def total(i)
+  #   if i.nil?
+  #     0
+  #   else
+  #     (i * 0.01666667).round(2)
+  #   end
+  # end
   
+  def total_all(i)
+    if i == 1
+      a = usage_times.created_today.pluck(:elapsed_time).inject(:+)
+    end
+    
+    if a.nil?
+      0
+    else
+      (a * 0.01666667).round(2)
+    end
   end
+  
+  # def self.total
+  #   (self * 0.01666667).round(2)
+  # end
   
   # ゲストユーザー用
   def self.guest
