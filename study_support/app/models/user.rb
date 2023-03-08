@@ -8,17 +8,22 @@ class User < ApplicationRecord
   has_many :usage_times, dependent: :destroy
   has_many :check, dependent: :destroy
   
-  # def total(i)
-  #   if i.nil?
-  #     0
-  #   else
-  #     (i * 0.01666667).round(2)
-  #   end
-  # end
-  
+  # 所要時間まとめ
   def total_all(i)
     if i == 1
       a = usage_times.created_today.pluck(:elapsed_time).inject(:+)
+    elsif i == 2
+      a = usage_times.created_yesterday.pluck(:elapsed_time).inject(:+)
+    elsif i == 3
+      a = usage_times.created_two_days_ago.pluck(:elapsed_time).inject(:+)
+    elsif i == 4
+      a = usage_times.created_three_days_ago.pluck(:elapsed_time).inject(:+)
+    elsif i == 5
+      a = usage_times.created_four_days_ago.pluck(:elapsed_time).inject(:+)
+    elsif i == 6
+      a = usage_times.created_four_days_ago.pluck(:elapsed_time).inject(:+)
+    elsif i == 7
+      a = usage_times.created_six_days_ago.pluck(:elapsed_time).inject(:+)
     end
     
     if a.nil?
@@ -28,9 +33,6 @@ class User < ApplicationRecord
     end
   end
   
-  # def self.total
-  #   (self * 0.01666667).round(2)
-  # end
   
   # ゲストユーザー用
   def self.guest

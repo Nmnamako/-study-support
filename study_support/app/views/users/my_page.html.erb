@@ -14,7 +14,7 @@
           datasets: [{
             tension: 0.3,
             label: '1週間の作業時間',
-            data: [<%= @day7_total_times %>,<%= @day6_total_times %>,<%= @day5_total_times %>,<%= @day4_total_times %>,<%= @day3_total_times %>,<%= @day2_total_times %>,<%= current_user.total_all(1) %>],
+            data: [<%= current_user.total_all(7) %>,<%= current_user.total_all(6) %>,<%= current_user.total_all(5) %>,<%= current_user.total_all(4) %>,<%= current_user.total_all(3) %>,<%= current_user.total_all(2) %>,<%= current_user.total_all(1) %>],
             
             //barの色、太さ、線の色
             backgroundColor: [ '#B0E0E6' ],

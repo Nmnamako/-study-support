@@ -11,13 +11,4 @@ class UsageTime < ApplicationRecord
   scope :created_five_days_ago, -> { where(created_at: 5.day.ago.all_day) } #5日前
   scope :created_six_days_ago, -> { where(created_at: 6.day.ago.all_day) } #6日前
   
-  
-  def total(time)
-    if (time.nil?)
-      time = 0
-    else
-      (time * 0.01666667).round(2)
-    end
-  end
-  
 end
